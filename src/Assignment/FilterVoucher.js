@@ -53,7 +53,11 @@ const FilterVoucher = ({visible, onClose}) => {
 
   return (
     <Modal visible={true} animationType="slide" transparent={true}>
-      <StatusBar backgroundColor="grey" barStyle="dark-content" />
+      <StatusBar
+        backgroundColor="#fff"
+        barStyle="dark-content"
+        translucent={false}
+      />
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <View
           style={{

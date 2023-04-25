@@ -217,9 +217,7 @@ const BrandVoucher = props => {
   return (
     <View style={styles.container}>
       {/* header */}
-      <View style={styles.statusbar}>
-        <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
-      </View>
+      <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
       {/* Header */}
       <View style={styles.header}>
         <View
@@ -282,6 +280,7 @@ const BrandVoucher = props => {
                       <Icon5
                         name="ondemand-video"
                         size={30}
+                        // color={'grey'}
                         style={styles.iconStyle}
                       />
                     </TouchableOpacity>
@@ -598,15 +597,14 @@ const BrandVoucher = props => {
           renderItem={renderItem}
           keyExtractor={data => data.id}
         />
-
-        {isModalOpen && (
-          <FilterModal
-            visible={isModalOpen}
-            onClose={() => setIsModalOpen(false)}
-            statusbar={StatusBar}
-          />
-        )}
       </ScrollView>
+      {isModalOpen && (
+        <FilterModal
+          visible={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          //  statusbar={StatusBar}
+        />
+      )}
     </View>
   );
 };
@@ -797,10 +795,12 @@ const styles = StyleSheet.create({
     margin: 7,
   },
   iconStyle: {
+    color: 'grey',
     backgroundColor: '#FFFFFF',
     elevation: 4,
     justifyContent: 'center',
     alignSelf: 'center',
+    alignItems: 'center',
     padding: verticalScale(15),
     borderRadius: verticalScale(6),
     marginBottom: verticalScale(4),

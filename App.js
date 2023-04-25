@@ -1,5 +1,5 @@
 import {View, StyleSheet} from 'react-native';
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import Design from './src/screens/Design';
 import Rating from './src/Screens2/Rating';
 //import AuthStack from './src/Screens2/Navigation/AuthStack'
@@ -15,10 +15,9 @@ import Navigation from './src/MainNavigation/Navigation';
 //import ImagePickers from './src/Screen5/ImagePickers';
 import Weather2 from './src/Screen7/Weather2';
 import Weather from './src/Screen7/Weather';
-import { loadFonts } from './assets/fonts/fonts';
+import {loadFonts} from './assets/fonts/fonts';
 
 const App = () => {
-  
   return (
     <View style={styles.container}>
       {/* <Design/> */}
@@ -31,18 +30,17 @@ const App = () => {
       {/* <ImagePickerApp /> */}
       {/* <ExploreUI/> */}
       {/* <Calender /> */}
-       <Navigation />
+      <Navigation />
       {/* <ImagePickers /> */}
       {/* <Weather2 /> */}
-       {/* <Weather/> */}
-
+      {/* <Weather/> */}
     </View>
   );
 };
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    //backgroundColor: '#ffffff',
   },
 });
 export default App;
