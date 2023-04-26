@@ -97,66 +97,66 @@ const Navigation = () => {
         <Stack.Screen  name='RoamingPlan'component={RoamingPlan}/>
         <Stack.Screen  name='Weather' component={Weather} options={{headerShown:false}}/>
         <Stack.Screen  name='WeatherInfo' component={WeatherInfo} options={{headerShown:false}}   /> */}
+
         <Stack.Screen
           name="BrandVoucher"
           component={BrandVoucher}
           options={{headerShown: false}}
         />
-        {/* <Stack.Screen
+        <Stack.Group screenOptions={{animation: 'slide_from_right'}}>
+          {/* <Stack.Screen
           name="BrandVoucher2"
           component={BrandVoucher2}
           options={{headerShown: false}}
         /> */}
-        <Stack.Screen
-          name="VoucherBalance"
-          component={VoucherBalance}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Transanction"
-          component={Transanction}
-          options={{headerShown: false}}
-        />
+          <Stack.Screen
+            name="VoucherBalance"
+            component={VoucherBalance}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Transanction"
+            component={Transanction}
+            options={{headerShown: false}}
+          />
 
-       
-        <Stack.Screen
-          name="CheckBalance"
-          component={CheckBalance}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Vouchers"
-          component={Vouchers}
-          options={{headerShown: false}}
-        />
           <Stack.Screen
-          name="EGiftVoucher"
-          component={EGiftVoucher}
-          options={{headerShown: false}}
-        />
-         <Stack.Screen
-          name="EGiftVoucher2"
-          component={EGiftVoucher2}
-          options={{headerShown: false}}
-        />
-         <Stack.Screen
-          name="BulkEgift"
-          component={BulkEgift}
-          options={{headerShown: false}}
-        />
-         <Stack.Screen
-          name="Pin"
-          component={Pin}
-          options={{headerShown: false}}
-        />
+            name="CheckBalance"
+            component={CheckBalance}
+            options={{headerShown: false}}
+          />
           <Stack.Screen
-          name="SuccessPage"
-          component={SuccessPage}
-          options={{headerShown: false}}
-        />
+            name="Vouchers"
+            component={Vouchers}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="EGiftVoucher"
+            component={EGiftVoucher}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="EGiftVoucher2"
+            component={EGiftVoucher2}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="BulkEgift"
+            component={BulkEgift}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Pin"
+            component={Pin}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SuccessPage"
+            component={SuccessPage}
+            options={{headerShown: false}}
+          />
+        </Stack.Group>
       </Stack.Navigator>
-      
-
     </NavigationContainer>
   );
 };

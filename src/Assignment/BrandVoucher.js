@@ -136,7 +136,6 @@ const BrandVoucher = props => {
               </Text>
             </View>
           </View>
-
           <View style={styles.row}>
             <View style={[styles.column]}>
               <Text

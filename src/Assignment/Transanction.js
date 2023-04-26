@@ -30,7 +30,6 @@ const Transanction = ({navigation}) => {
           width: scale(280),
           flexDirection: 'row',
           justifyContent: 'space-between',
-
           alignItems: 'center',
         }}>
         <Text style={styles.item}>{item.key}:</Text>
@@ -262,7 +261,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.15,
     shadowRadius: 8,
     borderRadius: verticalScale(6),
-    // paddingBottom: 10,
+    paddingBottom: 10,
     marginTop: verticalScale(22),
     // boxShadow: '0px 4px 8px 0px #68686826',
   },
@@ -279,8 +278,10 @@ const styles = StyleSheet.create({
     borderRadius: verticalScale(6),
   },
   item: {
+    //backgroundColor: 'red',
     fontSize: scaleFont(14),
     fontFamily: 'Inter-Bold',
+    color: '#727272',
   },
   item2: {
     padding: verticalScale(3),
