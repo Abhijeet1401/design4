@@ -7,7 +7,7 @@ import {ScrollView} from 'react-native-virtualized-view';
 
 import Tabs from '../Screen4/Tabs';
 import ExploreUI from '../Screen6/ExploreUI';
-import BusinessWallet from '../Screen3/BusinessWallet'
+import BusinessWallet from '../Screen3/BusinessWallet';
 
 const data = [
   {
@@ -83,7 +83,7 @@ const renderItem = ({item}) => {
             paddingLeft: 4,
             paddingBottom: 4,
           }}>
-          <Icon2 name="business-center" size={20} />
+          <Icon2 name="business-center" size={20} color="black" />
         </Text>
       </View>
       <View style={styles.rowContainer}>
@@ -236,6 +236,7 @@ const styles = StyleSheet.create({
     // backgroundColor: '',
   },
   buttonText: {
+    color: 'black',
     fontSize: 14,
     fontWeight: 'bold',
   },

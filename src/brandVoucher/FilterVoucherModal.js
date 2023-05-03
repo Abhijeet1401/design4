@@ -19,7 +19,7 @@ import {
   fullWidth,
 } from './Utility';
 
-const FilterVoucher = ({visible, onClose}) => {
+const FilterVoucherModal = ({visible, onClose}) => {
   const [selectedStatuses, setSelectedStatuses] = useState([]);
   const [selectedButton, setSelectedButton] = useState(null);
 
@@ -52,48 +52,30 @@ const FilterVoucher = ({visible, onClose}) => {
   };
 
   return (
-    <Modal visible={true} animationType="slide" transparent={true}>
+    <Modal
+      visible={true}
+      animationType="slide"
+      transparent={true}
+      onRequestClose={onClose}>
       <StatusBar
         backgroundColor="#fff"
         barStyle="dark-content"
         translucent={false}
       />
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <View
-          style={{
-            padding: 20,
-            height: verticalScale(340),
-            backgroundColor: '#FFFF',
-            elevation: 5,
-            alignSelf: 'center',
-            width: scale(330),
-            borderRadius: verticalScale(6),
-          }}>
-          <View
-            style={{
-              marginBottom: verticalScale(20),
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}>
-            <Text
-              style={{
-                fontSize: scaleFont(18),
-                fontWeight: 'bold',
-                fontFamily: 'Inter-Bold',
-                color: '#1D1D1D',
-              }}>
-              Filters
-            </Text>
+        <View style={styles.mainView}>
+          <View style={styles.filterView}>
+            <Text style={styles.textTitleFilter}>Filters</Text>
             {/* close button */}
             <View style={styles.cancel}>
               <TouchableOpacity onPress={onClose}>
                 <Text
-                  style={{
-                    textAlign: 'right',
-                    // marginTop: 20,
-                    // marginRight: 20,
-                    color: 'blue',
-                  }}>
+                  style={
+                    {
+                      //textAlign: 'right',
+                      //color: 'blue',
+                    }
+                  }>
                   <Icon2 name="remove" size={30} color={'black'} />
                 </Text>
               </TouchableOpacity>
@@ -263,6 +245,26 @@ const styles = StyleSheet.create({
   //   fontWeight: 'bold',
   //   marginBottom: 15,
   // },
+  mainView: {
+    padding: 20,
+    height: verticalScale(340),
+    backgroundColor: '#FFFF',
+    elevation: 5,
+    alignSelf: 'center',
+    width: scale(330),
+    borderRadius: verticalScale(6),
+  },
+  filterView: {
+    marginBottom: verticalScale(20),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  textTitleFilter: {
+    fontSize: scaleFont(18),
+    fontWeight: 'bold',
+    fontFamily: 'Inter-Bold',
+    color: '#1D1D1D',
+  },
   buttonContainer: {
     marginTop: verticalScale(10),
     flexDirection: 'row',
@@ -327,4 +329,4 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
   },
 });
-export default FilterVoucher;
+export default FilterVoucherModal;

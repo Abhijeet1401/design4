@@ -7,8 +7,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const MAX_ICONS = 14;
 const ICONS_PER_ROW = 4;
-import Fashion from './Vouchers';
-import BrandVoucher from './BrandVoucher';
+import Fashion from './FashionLifeStyleScreen';
+import BrandVoucher from './BrandVoucherMainScreen.js';
 const IconsList = props => {
   const [showAll, setShowAll] = useState(false);
 

@@ -9,7 +9,7 @@ import {
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {TextInput} from 'react-native-paper';
-import EGiftVoucher from './EGiftVoucher';
+import EGiftVoucher from './EGiftVoucherFormModal';
 import {
   verticalScale,
   scale,
@@ -17,39 +17,21 @@ import {
   fullHeight,
   fullWidth,
 } from './Utility';
+import EGiftVoucherFormModal from './EGiftVoucherFormModal';
+import {useNavigation} from '@react-navigation/native';
 
-const EGiftVoucher2 = ({navigation}) => {
-  const [textInput1, setTextInput1] = useState('');
-  const [textInput2, setTextInput2] = useState('');
-  const [textInput3, setTextInput3] = useState('');
-  const [textInput4, setTextInput4] = useState('');
-  const handleTextInput1Change = text => {
-    setTextInput1(text);
-  };
-  const handleTextInput2Change = text => {
-    setTextInput2(text);
-  };
-  const handleTextInput3Change = text => {
-    setTextInput3(text);
-  };
-  const handleTextInput4Change = text => {
-    setTextInput4(text);
-  };
-
+const TermCondition = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       {/* header starts */}
       <View style={styles.header}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            width: scale(160),
-          }}>
-          <TouchableOpacity style={{width: 30, height: 30}} activeOpacity={1}>
+        <View style={styles.headerView}>
+          <TouchableOpacity
+            style={{width: 30, height: 30}}
+            activeOpacity={1}
+            onPress={() => navigation.goBack()}>
             <Icon
-              onPress={() => navigation.goBack()}
               name="angle-left"
               size={30}
               style={styles.arrow}
@@ -127,6 +109,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
   },
+  headerView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: scale(160),
+  },
   titleText: {
     width: scale(128),
     color: '#0033A1',
@@ -202,4 +190,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EGiftVoucher2;
+export default TermCondition;

@@ -1,9 +1,16 @@
-import {View, Text, StyleSheet, Dimensions,TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import DeviceInfo from 'react-native-device-info';
 import {getUniqueId, getManufacturer} from 'react-native-device-info';
 import Icon4 from 'react-native-vector-icons/Ionicons';
 import Weather from './Weather';
+import Calender from './Calender';
 const DeviceInformation = ({navigation}) => {
   const deviceModel = DeviceInfo.getModel();
   const deviceBrand = DeviceInfo.getBrand();
@@ -12,7 +19,6 @@ const DeviceInformation = ({navigation}) => {
       <View style={styles.titleContainer}>
         <Text style={styles.titleName}>Device Infomation </Text>
       </View>
-
       <View>
         <View style={styles.infoContainer}>
           <Text style={styles.model}>DeviceInformation </Text>
@@ -25,7 +31,7 @@ const DeviceInformation = ({navigation}) => {
       </View>
       <View style={styles.bottom}>
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <TouchableOpacity onPress={() => navigation.navigate()}>
+          <TouchableOpacity onPress={() => navigation.navigate(Calender)}>
             <Icon4
               name="arrow-back"
               size={26}
@@ -66,7 +72,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   infoContainer: {
-    marginTop:20,
+    marginTop: 20,
     width: '90%',
     backgroundColor: 'white',
     flexDirection: 'row',
@@ -75,9 +81,9 @@ const styles = StyleSheet.create({
     elevation: 20,
     marginLeft: 15,
     marginRight: 25,
-    paddingTop:5,
-    paddingBottom:5,
-    borderRadius:10
+    paddingTop: 5,
+    paddingBottom: 5,
+    borderRadius: 10,
   },
   model: {
     fontSize: 18,
@@ -87,9 +93,10 @@ const styles = StyleSheet.create({
     marginLeft: 30,
   },
   modelName: {
+    color: '#1D1D1D',
     fontSize: 18,
     marginLeft: 30,
-    marginRight:20
+    marginRight: 20,
   },
   bottom: {
     width: '100%',

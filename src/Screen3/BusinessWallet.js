@@ -4,7 +4,7 @@ import {
   StyleSheet,
   Image,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -78,7 +78,7 @@ const BusinessWallet = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <View style={{marginRight: 'auto', marginTop: 'auto'}}>
+      <View style={{marginRight: 'auto'}}>
         <Icon
           name="angle-left"
           size={25}
@@ -116,7 +116,13 @@ const BusinessWallet = ({navigation}) => {
         <View style={styles.Wallet}>
           {/* <Text style={{fontSize: 15, marginRight: 55}}>Business Wallet</Text> */}
 
-          <Text style={{fontSize: 25, marginRight: 55, fontWeight: 'bold'}}>
+          <Text
+            style={{
+              fontSize: 25,
+              marginRight: 55,
+              fontWeight: 'bold',
+              color: 'black',
+            }}>
             <Icon name="rupee" size={25} style={{marginLeft: 25}} /> 3043
           </Text>
         </View>
@@ -131,6 +137,7 @@ const BusinessWallet = ({navigation}) => {
       <View style={styles.amountEnter}>
         <View style={{marginTop: 10}}>
           <Icon2
+            color={'black'}
             name="cash-register"
             size={28}
             style={{marginLeft: 15, paddingBottom: 10}}
@@ -145,16 +152,20 @@ const BusinessWallet = ({navigation}) => {
             keyboardType="numeric"
           />
         </View>
-        <View style={styles.iconRight}>     
-        <Icon name="angle-right" size={30}  style={{
-              backgroundColor: '#eee',  
-              marginRight:30,
-              paddingTop:2,
-              paddingLeft:4,
-              paddingBottom:2,
-              paddingRight:4
-            }}/>
-        
+        <View style={styles.iconRight}>
+          <Icon
+            color={'black'}
+            name="angle-right"
+            size={30}
+            style={{
+              backgroundColor: '#eee',
+              marginRight: 30,
+              paddingTop: 2,
+              paddingLeft: 4,
+              paddingBottom: 2,
+              paddingRight: 4,
+            }}
+          />
         </View>
       </View>
       {/* other ways to add money */}
@@ -167,6 +178,7 @@ const BusinessWallet = ({navigation}) => {
         {/* option 1 */}
         <View style={{marginTop: 10}}>
           <Icon
+            color={'black'}
             name="bank"
             size={25}
             style={{marginLeft: 15, paddingBottom: 10}}
@@ -194,6 +206,7 @@ const BusinessWallet = ({navigation}) => {
       <View style={styles.optionsContainer}>
         <View style={{marginTop: 10}}>
           <Icon2
+            color={'black'}
             name="slot-machine"
             size={30}
             style={{marginLeft: 15, paddingBottom: 10}}
@@ -221,6 +234,7 @@ const BusinessWallet = ({navigation}) => {
       <View style={styles.optionsContainer}>
         <View style={{marginTop: 10}}>
           <Icon2
+            color={'black'}
             name="cash"
             size={30}
             style={{marginLeft: 15, paddingBottom: 10}}
@@ -248,6 +262,7 @@ const BusinessWallet = ({navigation}) => {
       <View style={styles.optionsContainer}>
         <View style={{marginTop: 10}}>
           <Icon2
+            color={'black'}
             name="account-cash"
             size={30}
             style={{marginLeft: 15, paddingBottom: 10}}
@@ -271,7 +286,12 @@ const BusinessWallet = ({navigation}) => {
           </Text>
         </View>
       </View>
-      <View style={{flexDirection: 'row', justifyContent: 'space-between',marginTop:40}}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          marginTop: 40,
+        }}>
         <TouchableOpacity onPress={() => navigation.navigate(ImagePickerApp)}>
           <Icon4
             name="arrow-back"
@@ -292,7 +312,7 @@ const BusinessWallet = ({navigation}) => {
 };
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
+    flex: 1,
     padding: 24,
   },
   WalletContainer: {

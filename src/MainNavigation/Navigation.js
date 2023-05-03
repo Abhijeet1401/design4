@@ -2,18 +2,22 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import BrandVoucher from '../Assignment/BrandVoucher';
-import VoucherBalance from '../Assignment/VoucherBalance';
-import Transanction from '../Assignment/Transanction';
-
-import CheckBalance from '../Assignment/CheckBalance';
-import BrandVoucher2 from '../Assignment/BrandVoucher2';
-import Vouchers from '../Assignment/Vouchers';
-import EGiftVoucher from '../Assignment/EGiftVoucher';
-import EGiftVoucher2 from '../Assignment/EGiftVoucher2';
-import BulkEgift from '../Assignment/BulkEgift';
-import Pin from '../Assignment/Pin';
-import SuccessPage from '../Assignment/SuccessPage';
+// import CheckVoucherBalanceFormModal from '../brandVoucher/CheckVoucherBalanceFormModal';
+// import TransanctionModal from '../brandVoucher/TransanctionModal';
+// import ShowVoucherBalanceModal from '../brandVoucher/ShowVoucherBalanceModal.js';
+// import BrandVoucher2 from '../brandVoucher/BrandVoucher2';
+// import FashionLifeStyleScreen from '../brandVoucher/FashionLifeStyleScreen';
+// import EGiftVoucherFormModal from '../brandVoucher/EGiftVoucherFormModal';
+// import TermCondition from '../brandVoucher/TermCondition';
+// import BulkEgift from '../brandVoucher/BulkEgift';
+// import IPinModal from '../brandVoucher/IPinModal';
+// import TransactionStatusModal from '../brandVoucher/TransactionStatusModal';
+// import BrandVoucherMainScreen from '../brandVoucher/BrandVoucherMainScreen.js';
+import CreditCardMainScreen from '../creditCard/CreditCardMainScreen';
+import CcBillsPayForm from '../creditCard/CcBillsPayForm';
+import BillsPaymentStatus from '../creditCard/BillsPaymentStatus';
+import PreviousTransanctions from '../creditCard/PreviousTransanctions';
+import IPinModal from '../creditCard/IPinModal';
 
 // import Calender from '../Screen7/Calender';
 // import ExploreUI from '../Screen6/ExploreUI';
@@ -38,7 +42,7 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="CreditCardMainScreen">
         {/* <Stack.Screen
           name="Calender"
           component={Calender}
@@ -90,72 +94,117 @@ const Navigation = () => {
           component={Design}
           options={{headerShown: false}}
         />
-        <Stack.Screen  name='DataPlan' component={DataPlan}/>
-        <Stack.Screen  name='ForYouPlan'component={ForYouPlan}/>
-        <Stack.Screen  name='PlanTypes'component={PlanTypes}/>
-        <Stack.Screen   name='UnlimitedPlan' component={UnlimitedPlan}/>
-        <Stack.Screen  name='RoamingPlan'component={RoamingPlan}/>
-        <Stack.Screen  name='Weather' component={Weather} options={{headerShown:false}}/>
-        <Stack.Screen  name='WeatherInfo' component={WeatherInfo} options={{headerShown:false}}   /> */}
-
+        <Stack.Screen name="DataPlan" component={DataPlan} />
+        <Stack.Screen name="ForYouPlan" component={ForYouPlan} />
+        <Stack.Screen name="PlanTypes" component={PlanTypes} />
+        <Stack.Screen name="UnlimitedPlan" component={UnlimitedPlan} />
+        <Stack.Screen name="RoamingPlan" component={RoamingPlan} />
         <Stack.Screen
-          name="BrandVoucher"
-          component={BrandVoucher}
+          name="Weather"
+          component={Weather}
           options={{headerShown: false}}
         />
-        <Stack.Group screenOptions={{animation: 'slide_from_right'}}>
-          {/* <Stack.Screen
+        <Stack.Screen
+          name="WeatherInfo"
+          component={WeatherInfo}
+          options={{headerShown: false}}
+        /> */}
+
+        {/* <Stack.Screen
+          name="BrandVoucherMainScreen"
+          component={BrandVoucherMainScreen}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="CheckVoucherBalanceFormModal"
+          component={CheckVoucherBalanceFormModal}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ShowVoucherBalanceModal"
+          component={ShowVoucherBalanceModal}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="IPinModal"
+          component={IPinModal}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="TransactionStatusModal"
+          component={TransactionStatusModal}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="EGiftVoucherFormModal"
+          component={EGiftVoucherFormModal}
+          options={{headerShown: false}}
+        /> */}
+
+        {/* <Stack.Screen
           name="BrandVoucher2"
           component={BrandVoucher2}
           options={{headerShown: false}}
         /> */}
-          <Stack.Screen
-            name="VoucherBalance"
-            component={VoucherBalance}
+        {/* <Stack.Screen
+            name="CheckVoucherBalanceForm"
+            component={CheckVoucherBalanceForm}
             options={{headerShown: false}}
           />
           <Stack.Screen
-            name="Transanction"
-            component={Transanction}
+            name="ShowVoucherBalance"
+            component={ShowVoucherBalance}
             options={{headerShown: false}}
-          />
+          /> */}
+        {/* <Stack.Screen
+          name="TransanctionModal"
+          component={TransanctionModal}
+          options={{headerShown: false}}
+        />
 
-          <Stack.Screen
-            name="CheckBalance"
-            component={CheckBalance}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Vouchers"
-            component={Vouchers}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="EGiftVoucher"
-            component={EGiftVoucher}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="EGiftVoucher2"
-            component={EGiftVoucher2}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="BulkEgift"
-            component={BulkEgift}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Pin"
-            component={Pin}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="SuccessPage"
-            component={SuccessPage}
-            options={{headerShown: false}}
-          />
-        </Stack.Group>
+        <Stack.Screen
+          name="FashionLifeStyleScreen"
+          component={FashionLifeStyleScreen}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="TermCondition"
+          component={TermCondition}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="BulkEgift"
+          component={BulkEgift}
+          options={{headerShown: false}}
+        /> */}
+
+        <Stack.Screen
+          name="CreditCardMainScreen"
+          component={CreditCardMainScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="CcBillsPayForm"
+          component={CcBillsPayForm}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="BillsPaymentStatus"
+          component={BillsPaymentStatus}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="PreviousTransanctions"
+          component={PreviousTransanctions}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="IPinModal"
+          component={IPinModal}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

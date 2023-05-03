@@ -8,6 +8,7 @@ import {
   Image,
   StatusBar,
   Dimensions,
+  Modal,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
@@ -20,12 +21,12 @@ import Icon3 from 'react-native-vector-icons/AntDesign';
 import Icon4 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon5 from 'react-native-vector-icons/MaterialIcons';
 import {Ionicons} from '@expo/vector-icons';
-import VoucherBalance from './VoucherBalance';
-import Transanction from './Transanction';
+import CheckVoucherBalanceForm from './CheckVoucherBalanceFormModal';
+import Transanction from './TransanctionModal';
 import FilterTransanction from './FilterTransanction';
 import IconsList from './IconsList';
-import Vouchers from './Vouchers';
-import FilterModal from './FilterModal';
+import Vouchers from './FashionLifeStyleScreen';
+import SearchTransanctionModal from './SearchTransanctionModal';
 import {ScrollView} from 'react-native-virtualized-view';
 import {
   verticalScale,
@@ -34,6 +35,7 @@ import {
   fullHeight,
   fullWidth,
 } from './Utility';
+import CheckVoucherBalanceFormModal from './CheckVoucherBalanceFormModal';
 const data = [
   {
     id: 1,
@@ -55,7 +57,6 @@ const data = [
   },
   {
     id: 3,
-    //OrderId: "Order ID",
     TxnID: '87465738695748',
     VoucherName: 'Myntra',
     name: 'Ramesh Gupta',
@@ -93,12 +94,14 @@ const data = [
   },
 ];
 
-const BrandVoucher = props => {
+const BrandVoucherMainScreen = props => {
   const [text, setText] = useState('');
   const [text2, setText2] = useState('');
   const [showAllMenu, setShowAllMenu] = useState(false);
   // const [showAll, setShowAll] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModal2Open, setIsModal2Open] = useState(false);
+  const [isModal3Open, setIsModal3Open] = useState(false);
 
   const handleMoreIcons = () => {
     setShowAllMenu(true);
@@ -122,18 +125,18 @@ const BrandVoucher = props => {
       <View style={styles.Cards}>
         <TouchableOpacity
           activeOpacity={1}
-          onPress={() => props.navigation.navigate(Transanction)}>
+          onPress={() => setIsModal3Open(true)}>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text
+              {/* <Text
                 style={{
-                  // color: 'red',
+                  color: 'red',
                   // fontWeight: 'bold',
                   fontSize: scaleFont(12),
                   fontFamily: 'Inter-Regular',
                 }}>
                 {item.OrderId}
-              </Text>
+              </Text> */}
             </View>
           </View>
           <View style={styles.row}>
@@ -142,7 +145,6 @@ const BrandVoucher = props => {
                 style={{
                   color: '#1D1D1D',
                   fontSize: scaleFont(14),
-                  // fontFamily: 'Inter-Black',
                   fontFamily: 'Inter-Bold',
                 }}>
                 {item.TxnID}
@@ -153,7 +155,6 @@ const BrandVoucher = props => {
                 style={{
                   color: '#1D1D1D',
                   fontSize: scaleFont(14),
-                  // fontFamily: 'Inter-Black',
                   fontFamily: 'Inter-Bold',
                 }}>
                 {item.Amount}
@@ -218,27 +219,21 @@ const BrandVoucher = props => {
       {/* header */}
       <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
       {/* Header */}
-      <View style={styles.header}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            width: scale(160),
-          }}>
+      <View style={styles.headerContainer}>
+        <View style={styles.headerView}>
           <Icon
             name="angle-left"
             size={30}
-            // style={styles.arrow}
             color={'#0033A1'}
-            style={{width: scale(20)}}
+            //style={{width: scale(20)}}
           />
           <Text style={styles.titleText}>Brand Voucher</Text>
         </View>
-        <Icon name="rupee" size={25} style={styles.icon} color="#048848" />
+        <Icon name="rupee" size={25} color="#048848" />
       </View>
       {/* header Ends */}
-      {/* serach container */}
+
+      {/* Search container */}
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.SearchContainer}>
           <View style={styles.inputContainer}>
@@ -246,12 +241,13 @@ const BrandVoucher = props => {
               onChange={txt => setText(txt)}
               value={text}
               placeholderTextColor={'#727272'}
-              style={{
-                flex: 1,
-                fontSize: scaleFont(12),
-                color: '#727272',
-                fontFamily: 'Inter-Regular',
-              }}
+              style={
+                styles.textInput
+                // flex: 1,
+                // fontSize: scaleFont(12),
+                // color: '#727272',
+                // fontFamily: 'Inter-Regular',
+              }
               placeholder="Search for Voucher"
             />
             <Icon
@@ -263,9 +259,10 @@ const BrandVoucher = props => {
             />
           </View>
         </View>
+        {/* Search container Ends  */}
 
-        {/* frame */}
-        <View style={styles.frame}>
+        {/* Icons Category Container */}
+        <View style={styles.CategoryContainer}>
           <View style={styles.selectCateogory}>
             <Text style={styles.categoryTitle}>Select By Category</Text>
           </View>
@@ -315,21 +312,22 @@ const BrandVoucher = props => {
                       <Icon5
                         name="dashboard-customize"
                         size={30}
-                        style={{
-                          backgroundColor: '#4E74C7',
-                          color: '#FFFFFF',
-                          elevation: 4,
-                          justifyContent: 'center',
-                          alignSelf: 'center',
-                          padding: verticalScale(15),
-                          marginBottom: 4,
-                          borderRadius: 8,
-                          transform: [
-                            {
-                              rotate: '270deg',
-                            },
-                          ],
-                        }}
+                        style={
+                          styles.moreIcon
+                          // backgroundColor: '#4E74C7',
+                          // color: '#FFFFFF',
+                          // elevation: 4,
+                          // justifyContent: 'center',
+                          // alignSelf: 'center',
+                          // padding: verticalScale(15),
+                          // marginBottom: 4,
+                          // borderRadius: 8,
+                          // transform: [
+                          //   {
+                          //     rotate: '270deg',
+                          //   },
+                          // ],
+                        }
                       />
                     </TouchableOpacity>
                     <Text style={styles.iconText}>More</Text>
@@ -482,27 +480,28 @@ const BrandVoucher = props => {
                       <Icon5
                         name="dashboard-customize"
                         size={30}
-                        style={{
-                          backgroundColor: '#4E74C7',
-                          color: 'white',
-                          elevation: 2,
-                          justifyContent: 'center',
-                          alignSelf: 'center',
-                          padding: verticalScale(15),
-                          marginBottom: verticalScale(4),
-                          borderRadius: verticalScale(6),
-                          transform: [
-                            {
-                              rotate: '270deg',
-                            },
-                          ],
-                        }}
+                        style={
+                          styles.lessIcon
+                          // backgroundColor: '#4E74C7',
+                          // color: 'white',
+                          // elevation: 2,
+                          // justifyContent: 'center',
+                          // alignSelf: 'center',
+                          // padding: verticalScale(15),
+                          // marginBottom: verticalScale(4),
+                          // borderRadius: verticalScale(6),
+                          // transform: [
+                          //   {
+                          //     rotate: '270deg',
+                          //   },
+                          // ],
+                        }
                       />
                     </TouchableOpacity>
                     <Text style={styles.iconText}>Less</Text>
                   </View>
 
-                  {/*  showing More Icons */}
+                  {/*  showing More Icons Ends */}
                 </View>
               </View>
             )}
@@ -514,9 +513,10 @@ const BrandVoucher = props => {
         <TouchableOpacity
           activeOpacity={1}
           onPress={() => {
-            props.navigation.navigate('VoucherBalance');
+            setIsModal2Open(true);
+            // props.navigation.navigate(CheckVoucherBalanceForm);
           }}>
-          <View style={styles.frame2}>
+          <View style={styles.voucherFrame}>
             <View style={styles.CheckVoucherContainer}>
               <Text style={styles.textVoucher}>Check Voucher Balance</Text>
 
@@ -524,36 +524,48 @@ const BrandVoucher = props => {
             </View>
           </View>
         </TouchableOpacity>
+        {/* opening modal CheckVoucherBalanceForm */}
+        {isModal2Open && (
+          <CheckVoucherBalanceFormModal
+            visible={isModal2Open}
+            onClose={() => setIsModal2Open(false)}
+            //  statusbar={StatusBar}
+          />
+        )}
+        {/* closing modal CheckVoucherBalanceForm */}
         {/* search container 2 */}
         <View style={styles.border}></View>
-        <View style={styles.search2}>
+        <View style={styles.searchContainer2}>
           <View
-            style={{
-              width: scale(283),
-              borderRadius: verticalScale(6),
-              alignSelf: 'center',
-              alignItems: 'center',
-              backgroundColor: '#F5F7FB',
-            }}>
+            style={
+              styles.search2MainView
+              // width: scale(283),
+              // borderRadius: verticalScale(6),
+              // alignSelf: 'center',
+              // alignItems: 'center',
+              // backgroundColor: '#F5F7FB',
+            }>
             <View
-              style={{
-                height: verticalScale(50),
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                width: scale(247),
-                alignSelf: 'center',
-              }}>
+              style={
+                styles.search2View
+                // height: verticalScale(50),
+                // flexDirection: 'row',
+                // alignItems: 'center',
+                // justifyContent: 'space-between',
+                // width: scale(247),
+                // alignSelf: 'center',
+              }>
               <TextInput
                 onChange={txt => setText2(txt)}
                 value={text2}
                 placeholderTextColor={'#727272'}
-                style={{
-                  flex: 1,
-                  fontSize: scaleFont(12),
-                  color: '#1D1D1D',
-                  fontFamily: 'Inter-Medium',
-                }}
+                style={
+                  styles.textInput
+                  // flex: 1,
+                  // fontSize: scaleFont(12),
+                  // color: '#1D1D1D',
+                  // fontFamily: 'Inter-Medium',
+                }
                 placeholder="Search (set date for past transanctions)"
               />
               <Icon
@@ -565,7 +577,6 @@ const BrandVoucher = props => {
               />
             </View>
             {/* filter  */}
-
             {/* <TouchableOpacity>
               <Icon
                 name="search"
@@ -598,9 +609,16 @@ const BrandVoucher = props => {
         />
       </ScrollView>
       {isModalOpen && (
-        <FilterModal
+        <SearchTransanctionModal
           visible={isModalOpen}
           onClose={() => setIsModalOpen(false)}
+          //  statusbar={StatusBar}
+        />
+      )}
+      {isModal3Open && (
+        <Transanction
+          visible={isModal3Open}
+          onClose={() => setIsModal3Open(false)}
           //  statusbar={StatusBar}
         />
       )}
@@ -612,8 +630,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     flex: 1,
   },
-
-  header: {
+  // CSS For Header
+  headerContainer: {
     flexDirection: 'row',
     width: scale(330),
     height: verticalScale(48),
@@ -621,6 +639,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  headerView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: scale(160),
   },
 
   titleText: {
@@ -632,6 +656,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red',
   },
 
+  // CSS For SearchContainer
   SearchContainer: {
     marginTop: verticalScale(15),
     height: verticalScale(50),
@@ -650,8 +675,14 @@ const styles = StyleSheet.create({
     //paddingLeft: 15,
     flexDirection: 'row',
   },
+  textInput: {
+    flex: 1,
+    fontSize: scaleFont(12),
+    color: '#727272',
+    fontFamily: 'Inter-Regular',
+  },
   // Select by category Container
-  frame: {
+  CategoryContainer: {
     width: scale(330),
     marginTop: verticalScale(20),
     backgroundColor: '#F5F7FB',
@@ -672,12 +703,42 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Bold',
     fontSize: scaleFont(12),
   },
+  moreIcon: {
+    backgroundColor: '#4E74C7',
+    color: '#FFFFFF',
+    elevation: 4,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    padding: verticalScale(15),
+    marginBottom: 4,
+    borderRadius: 8,
+    transform: [
+      {
+        rotate: '270deg',
+      },
+    ],
+  },
+  lessIcon: {
+    backgroundColor: '#4E74C7',
+    color: 'white',
+    elevation: 2,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    padding: verticalScale(15),
+    marginBottom: verticalScale(4),
+    borderRadius: verticalScale(6),
+    transform: [
+      {
+        rotate: '270deg',
+      },
+    ],
+  },
   iconWrap: {
     alignSelf: 'center',
     alignItems: 'center',
   },
-
-  frame2: {
+  // CSS FOR Check Voucher  Balance Container
+  voucherFrame: {
     justifyContent: 'space-between',
     marginTop: verticalScale(10),
     alignItems: 'center',
@@ -705,17 +766,31 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Medium',
     color: '#0033A1',
   },
-  // search Container css
-  search2: {
+  // search Container Second css
+  searchContainer2: {
     //backgroundColor: 'red',
     marginTop: verticalScale(15),
     width: scale(330),
-
     height: verticalScale(48),
     justifyContent: 'space-between',
     alignSelf: 'center',
     alignItems: 'center',
     flexDirection: 'row',
+  },
+  search2MainView: {
+    width: scale(283),
+    borderRadius: verticalScale(6),
+    alignSelf: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5F7FB',
+  },
+  search2View: {
+    height: verticalScale(50),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: scale(247),
+    alignSelf: 'center',
   },
   filter: {
     width: scale(30),
@@ -723,7 +798,9 @@ const styles = StyleSheet.create({
     color: '#0033A1',
   },
 
+  // CSS for Transanction Cards
   Cards: {
+    marginTop: verticalScale(20),
     alignSelf: 'center',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -780,7 +857,6 @@ const styles = StyleSheet.create({
     fontSize: scaleFont(12),
     marginTop: verticalScale(5),
   },
-
   rowContainer: {
     width: '100%',
     flexWrap: 'wrap',
@@ -813,5 +889,4 @@ const styles = StyleSheet.create({
     letterSpacing: 0.05,
   },
 });
-
-export default BrandVoucher;
+export default BrandVoucherMainScreen;

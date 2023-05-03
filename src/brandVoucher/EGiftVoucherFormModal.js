@@ -7,13 +7,15 @@ import {
   Keyboard,
   ScrollView,
   Dimensions,
+  Modal,
 } from 'react-native';
+
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {TextInput} from 'react-native-paper';
-import EGiftVoucher2 from './EGiftVoucher2';
+
 import BulkEgift from './BulkEgift';
-import Pin from './Pin';
+import IPinModal from './IPinModal';
 import {
   verticalScale,
   scale,
@@ -21,12 +23,17 @@ import {
   fullHeight,
   fullWidth,
 } from './Utility';
+import {useNavigation} from '@react-navigation/native';
+import TermCondition from './TermCondition';
 
-const EGiftVoucher = ({navigation}) => {
+const EGiftVoucherFormModal = ({visible, onClose}) => {
   const [textInput1, setTextInput1] = useState('');
   const [textInput2, setTextInput2] = useState('');
   const [textInput3, setTextInput3] = useState('');
   const [textInput4, setTextInput4] = useState('');
+  const navigation = useNavigation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  //const [isModal2Open, setIsModal2Open] = useState(false);
   const handleTextInput1Change = text => {
     setTextInput1(text);
   };
@@ -45,16 +52,13 @@ const EGiftVoucher = ({navigation}) => {
       <TouchableOpacity activeOpacity={1} onPress={() => Keyboard.dismiss()}>
         {/* header  */}
         <View style={styles.header}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              width: scale(160),
-            }}>
-            <TouchableOpacity style={{width: 30, height: 30}} activeOpacity={1}>
+          <View style={styles.headerView}>
+            <TouchableOpacity
+              style={{width: 30, height: 30}}
+              activeOpacity={1}
+              //onPress={() => navigation.goBack()}
+              onPress={onClose}>
               <Icon
-                onPress={() => navigation.goBack()}
                 name="angle-left"
                 size={30}
                 style={styles.arrow}
@@ -78,7 +82,7 @@ const EGiftVoucher = ({navigation}) => {
             <Text style={styles.msgText}>Book my Show Voucher(1 month)</Text>
             <TouchableOpacity
               style={styles.termview}
-              onPress={() => navigation.navigate(EGiftVoucher2)}>
+              onPress={() => navigation.navigate(TermCondition)}>
               <Text style={styles.termtext}>T&C</Text>
             </TouchableOpacity>
           </View>
@@ -90,10 +94,10 @@ const EGiftVoucher = ({navigation}) => {
                 value={textInput1}
                 onChange={handleTextInput1Change}
                 mode="outlined"
-                style={{
-                  backgroundColor: '#FFFFFF',
+                style={
+                  styles.textInputBox
                   //height: verticalScale(49),
-                }}
+                }
               />
               <TextInput
                 activeOutlineColor="#1D1D1D"
@@ -101,11 +105,7 @@ const EGiftVoucher = ({navigation}) => {
                 value={textInput2}
                 onChange={handleTextInput2Change}
                 mode="outlined"
-                style={{
-                  backgroundColor: '#FFFFFF',
-                  marginTop: verticalScale(24),
-                  //height: verticalScale(49),
-                }}
+                style={styles.textInputBox}
               />
               <TextInput
                 activeOutlineColor="#1D1D1D"
@@ -113,11 +113,7 @@ const EGiftVoucher = ({navigation}) => {
                 value={textInput3}
                 onChangeText={handleTextInput3Change}
                 mode="outlined"
-                style={{
-                  backgroundColor: '#FFFFFF',
-                  marginTop: verticalScale(24),
-                  //height: verticalScale(49),
-                }}
+                style={styles.textInputBox}
               />
               <TextInput
                 activeOutlineColor="#1D1D1D"
@@ -125,12 +121,7 @@ const EGiftVoucher = ({navigation}) => {
                 value={textInput4}
                 onChange={handleTextInput4Change}
                 mode="outlined"
-                style={{
-                  backgroundColor: '#FFFFFF',
-                  //backgroundColor: 'red',
-                  marginTop: verticalScale(24),
-                  // height: verticalScale(49),
-                }}
+                style={styles.textInputBox}
               />
             </View>
 
@@ -138,10 +129,19 @@ const EGiftVoucher = ({navigation}) => {
             <View style={styles.button}>
               <TouchableOpacity
                 activeOpacity={1}
-                onPress={() => navigation.navigate(Pin)}>
+                onPress={() => setIsModalOpen(true)}>
                 <Text style={styles.buttonText}>Send Voucher</Text>
               </TouchableOpacity>
             </View>
+            {/* open IPin Modal */}
+            {isModalOpen && (
+              <IPinModal
+                visible={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                //  statusbar={StatusBar}
+              />
+            )}
+            {/* term condition modal */}
 
             <View style={styles.extraInfo}>
               <TouchableOpacity
@@ -171,7 +171,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     //backgroundColor: 'green',
   },
-
+  headerView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: scale(160),
+  },
   titleText: {
     width: scale(128),
     color: '#0033A1',
@@ -183,7 +188,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     alignSelf: 'center',
     alignItems: 'center',
-    height: fullHeight,
+    height: verticalScale(600),
   },
   Voucher: {
     width: scale(330),
@@ -195,13 +200,17 @@ const styles = StyleSheet.create({
     marginTop: verticalScale(13),
     alignItems: 'center',
   },
+  textInputBox: {
+    backgroundColor: '#FFFFFF',
+    marginTop: verticalScale(24),
+  },
   msg: {
     width: scale(314),
     justifyContent: 'space-between',
     alignSelf: 'center',
     alignItems: 'center',
     marginTop: verticalScale(22),
-    marginBottom: verticalScale(26),
+    // marginBottom: verticalScale(26),
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -251,4 +260,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EGiftVoucher;
+export default EGiftVoucherFormModal;

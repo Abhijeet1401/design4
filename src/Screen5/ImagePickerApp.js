@@ -214,7 +214,12 @@ const ImagePickerApp = ({navigation}) => {
                 borderWidth: 2,
                 borderRadius: 10,
               }}>
-              <Icon name="camera" size={40} style={styles.icon} />
+              <Icon
+                name="camera"
+                size={40}
+                style={styles.icon}
+                color={'black'}
+              />
             </TouchableOpacity>
           ) : null}
         </View>
@@ -250,6 +255,7 @@ const ImagePickerApp = ({navigation}) => {
                     marginVertical: 10,
                     justifyContent: 'center',
                     alignSelf: 'center',
+                    color: 'black',
                   }}>
                   Camera
                 </Text>
@@ -270,6 +276,7 @@ const ImagePickerApp = ({navigation}) => {
                     marginVertical: 10,
                     justifyContent: 'center',
                     alignSelf: 'center',
+                    color: 'black',
                   }}>
                   Gallery
                 </Text>
@@ -290,6 +297,7 @@ const ImagePickerApp = ({navigation}) => {
                     marginVertical: 10,
                     justifyContent: 'center',
                     alignSelf: 'center',
+                    color: 'black',
                   }}>
                   Cancel
                 </Text>

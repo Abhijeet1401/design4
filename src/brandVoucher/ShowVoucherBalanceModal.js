@@ -1,5 +1,5 @@
-import {View, Text, FlatList} from 'react-native';
-
+import {View, Text, FlatList, Modal} from 'react-native';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {StyleSheet, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -10,6 +10,10 @@ import {
   fullHeight,
   fullWidth,
 } from './Utility';
+import BrandVoucherMainScreen from './BrandVoucherMainScreen';
+import CheckVoucherBalanceFormModal from './CheckVoucherBalanceFormModal';
+import Pin from './IPinModal';
+
 const data = [
   {
     id: 1,
@@ -19,7 +23,8 @@ const data = [
     ExpiryDate: '04/02/23',
   },
 ];
-const CheckBalance = ({navigation}) => {
+const ShowVoucherBalanceModal = ({visible, onClose}) => {
+  const navigation = useNavigation();
   // data to print on card
 
   const renderItem = ({item}) => {
@@ -44,51 +49,49 @@ const CheckBalance = ({navigation}) => {
   };
 
   return (
-    <View style={styles.container}>
-      {/* header Container */}
-      <View style={styles.header}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            //backgroundColor: 'red',
-            width: scale(300),
-            height: verticalScale(48),
-          }}>
-          <TouchableOpacity style={{width: 30, height: 30}} activeOpacity={1}>
-            <Icon
-              onPress={() => navigation.goBack()}
-              name="angle-left"
-              size={30}
-              style={styles.arrow}
-              color={'#0033A1'}
-            />
+    <Modal
+      visible={visible}
+      animationType="slide"
+      transparent={true}
+      onRequestClose={onClose}>
+      <View style={styles.container}>
+        {/* header Container */}
+        <View style={styles.header}>
+          <View style={styles.headerView}>
+            <TouchableOpacity style={{width: 30, height: 30}} activeOpacity={1}>
+              <Icon
+                onPress={() => navigation.navigate(BrandVoucherMainScreen)}
+                name="angle-left"
+                size={30}
+                style={styles.arrow}
+                color={'#0033A1'}
+              />
+            </TouchableOpacity>
+            <Text style={styles.titleText}>Check Voucher Balance</Text>
+          </View>
+        </View>
+        {/* input field */}
+        <View style={styles.card}>
+          {/* <Image source={require('./assets/Images/VoucherCard.png')} /> */}
+          <Image
+            source={require('./assets/Images/NewGiftImage.png')}
+            style={styles.giftImage}
+          />
+          <FlatList
+            data={data}
+            renderItem={renderItem}
+            keyExtractor={item => item.id.toString()}
+          />
+        </View>
+
+        {/* button */}
+        <View style={styles.button}>
+          <TouchableOpacity onPress={onClose}>
+            <Text style={styles.buttonText}>Close</Text>
           </TouchableOpacity>
-          <Text style={styles.titleText}>Check Voucher Balance</Text>
         </View>
       </View>
-      {/* input field */}
-      <View style={styles.card}>
-        {/* <Image source={require('./assets/Images/VoucherCard.png')} /> */}
-        <Image
-          source={require('./assets/Images/NewGiftImage.png')}
-          style={styles.giftImage}
-        />
-        <FlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={item => item.id.toString()}
-        />
-      </View>
-
-      {/* button */}
-      <View style={styles.button}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={styles.buttonText}>Close</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </Modal>
   );
 };
 const styles = StyleSheet.create({
@@ -107,7 +110,14 @@ const styles = StyleSheet.create({
     // justifyContent: 'space-between',
     // backgroundColor: 'green',
   },
-
+  headerView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    //backgroundColor: 'red',
+    width: scale(300),
+    height: verticalScale(48),
+  },
   titleText: {
     width: scale(265),
     color: '#0033A1',
@@ -170,28 +180,34 @@ const styles = StyleSheet.create({
   },
   validity: {},
   name: {
+    color: '#1D1D1D',
     fontSize: scaleFont(14),
     fontFamily: 'Inter-Regular',
   },
   num: {
+    color: '#1D1D1D',
     fontSize: scaleFont(14),
     fontFamily: 'Inter-Regular',
   },
   balanceName: {
+    color: '#1D1D1D',
     fontFamily: 'Inter-Thin',
     fontSize: scaleFont(14),
   },
   balance: {
+    color: '#1D1D1D',
     fontSize: scaleFont(18),
     fontFamily: 'Inter-Regular',
   },
   ExpLabel: {
+    color: '#1D1D1D',
     fontFamily: 'Inter-Thin',
     fontSize: scaleFont(14),
   },
   date: {
+    color: '#1D1D1D',
     fontSize: 18,
     fontFamily: 'Inter-Regular',
   },
 });
-export default CheckBalance;
+export default ShowVoucherBalanceModal;

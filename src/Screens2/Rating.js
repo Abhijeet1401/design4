@@ -14,6 +14,7 @@ import Icon4 from 'react-native-vector-icons/Ionicons';
 import ImagePickerApp from '../Screen5/ImagePickerApp';
 
 import Weather from '../Screen7/Weather';
+import Tabs from '../Screen4/Tabs';
 
 const Rating = ({navigation}) => {
   const [starRating, setStarRating] = useState(0);
@@ -97,8 +98,7 @@ const Rating = ({navigation}) => {
         </View>
         <View
           style={{
-            justifyContent: 'center',
-            alignItems: 'center',
+            alignSelf: 'center',
             backgroundColor: 'white',
           }}>
           <TouchableOpacity
@@ -115,7 +115,7 @@ const Rating = ({navigation}) => {
       </View>
       <View style={styles.bottom}>
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <TouchableOpacity onPress={() => navigation.navigate(Weather)}>
+          <TouchableOpacity onPress={() => navigation.navigate(Tabs)}>
             <Icon4
               name="arrow-back"
               size={26}

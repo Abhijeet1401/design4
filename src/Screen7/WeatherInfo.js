@@ -5,13 +5,16 @@ import {
   Dimensions,
   ImageBackground,
   TextInput,
+  ScrollView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import Weather from './Weather';
 import React, {useEffect, useState} from 'react';
 import SearchBar from './SearchBar';
 import {haze, sunny, snow, rainy, cloudy} from '../../assets/Images/index';
+import BrandVoucher from '../brandVoucher/BrandVoucherMainScreen.js';
+
 export default function WeatherInfo({
   data,
   fetchWeatherData = {fetchWeatherData},
@@ -19,7 +22,8 @@ export default function WeatherInfo({
   //console.log(data, 'show data');
   const [backgroundImage, setBackGroundImage] = useState(null);
   const [cityName, setCityName] = useState('');
-  const[textColor,setTextColor]=useState('white')
+  const [textColor, setTextColor] = useState('white');
+  const navigation = useNavigation();
 
   // stylesheet
   const styles = StyleSheet.create({
@@ -77,27 +81,25 @@ export default function WeatherInfo({
     setBackGroundImage(getBackgroundImage(main));
   }, [data]);
 
-  
-
   function getBackgroundImage(data) {
     if (data === 'Snow') {
-      setTextColor ('black') ;
+      setTextColor('black');
       return snow;
     }
     if (data === 'Rain') {
-      setTextColor ('white') ;
+      setTextColor('white');
       return rainy;
     }
     if (data == 'Clear') {
-      setTextColor ('white') ;
+      setTextColor('white');
       return sunny;
     }
     if (data === 'Haze') {
-      setTextColor ('white') ;
+      setTextColor('white');
       return haze;
     }
     if (data === 'Clouds') {
-      setTextColor ('white') ;
+      setTextColor('white');
       return cloudy;
     }
     return sunny;
@@ -173,6 +175,11 @@ export default function WeatherInfo({
             <Text style={{fontSize: 18, color: 'white'}}>{speed}m/s</Text>
           </View>
         </View>
+        <Text
+          style={{alignSelf: 'center', marginTop: 30}}
+          onPress={() => navigation.navigate(BrandVoucher)}>
+          Next
+        </Text>
       </ImageBackground>
     </View>
   );

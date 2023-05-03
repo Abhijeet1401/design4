@@ -11,13 +11,13 @@ import {
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
-import EGiftVoucher from './EGiftVoucher';
+//import EGiftVoucherFormModal from './EGiftVoucherFormModal';
 import Icon3 from 'react-native-vector-icons/AntDesign';
 
 import image1 from './assets/Images/bmshowVoucher.jpg';
 import image2 from './assets/Images/bmshowVoucher.jpg';
 import image3 from './assets/Images/bmshowVoucher.jpg';
-import FilterVoucher from './FilterVoucher';
+import FilterVoucherModal from './FilterVoucherModal';
 import {ScrollView} from 'react-native-virtualized-view';
 import {
   verticalScale,
@@ -26,6 +26,7 @@ import {
   fullHeight,
   fullWidth,
 } from './Utility';
+import EGiftVoucherFormModal from './EGiftVoucherFormModal';
 const data = [
   {
     id: 1,
@@ -47,15 +48,17 @@ const data = [
     range: '₹10,500 - ₹20,000',
   },
 ];
-const Vouchers = ({navigation}) => {
+const FashionLifeStyleScreen = ({navigation}) => {
   const renderCard = ({item}) => {
     return (
       <View style={styles.mainCard}>
         <TouchableOpacity
           activeOpacity={1}
           onPress={() => {
-            navigation.navigate(EGiftVoucher);
-          }}>
+            navigation.navigate(EGiftVoucherFormModal);
+          }}
+          // onPress={() => setIsModal2Open(true)}
+        >
           <Image style={styles.image} source={item.image} />
           <Text style={styles.textTitle}>{item.title}</Text>
           <Text style={styles.textRange}>{item.range}</Text>
@@ -66,6 +69,8 @@ const Vouchers = ({navigation}) => {
   };
   const [text, setText] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModal2Open, setIsModal2Open] = useState(false);
+
   return (
     <View style={styles.container}>
       {/* header  */}
@@ -99,12 +104,13 @@ const Vouchers = ({navigation}) => {
               onChange={txt => setText(txt)}
               value={text}
               placeholderTextColor={'#727272'}
-              style={{
-                flex: 1,
-                fontSize: scaleFont(12),
-                color: '#727272',
-                fontFamily: 'Inter-Regular',
-              }}
+              style={
+                styles.textInput
+                // flex: 1,
+                // fontSize: scaleFont(12),
+                // color: '#727272',
+                // fontFamily: 'Inter-Regular',
+              }
               placeholder="Search for Voucher"
             />
             <View style={styles.searchIcon}>
@@ -119,7 +125,6 @@ const Vouchers = ({navigation}) => {
           </View>
         </View>
         {/*  Voucher Cards  */}
-
         <View>
           <FlatList
             data={data}
@@ -129,7 +134,7 @@ const Vouchers = ({navigation}) => {
         </View>
 
         {isModalOpen && (
-          <FilterVoucher
+          <FilterVoucherModal
             visible={isModalOpen}
             transparent={true}
             onClose={() => setIsModalOpen(false)}
@@ -144,7 +149,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     flex: 1,
   },
-
+  // CSS For Header
   header: {
     height: verticalScale(48),
     width: scale(330),
@@ -179,7 +184,7 @@ const styles = StyleSheet.create({
   filter: {
     color: '#0033A1',
   },
-  // Search Container
+  // CSS Search Container
 
   SearchContainer: {
     marginTop: verticalScale(16),
@@ -200,7 +205,12 @@ const styles = StyleSheet.create({
     //paddingLeft: 15,
     flexDirection: 'row',
   },
-
+  textInput: {
+    flex: 1,
+    fontSize: scaleFont(12),
+    color: '#727272',
+    fontFamily: 'Inter-Regular',
+  },
   mainCard: {
     width: scale(330),
     elevation: 2,
@@ -241,4 +251,4 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Medium',
   },
 });
-export default Vouchers;
+export default FashionLifeStyleScreen;

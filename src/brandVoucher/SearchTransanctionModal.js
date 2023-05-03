@@ -8,7 +8,7 @@ import {
   StatusBar,
   SafeAreaView,
 } from 'react-native';
-import BrandVoucher from './BrandVoucher';
+import BrandVoucher from './BrandVoucherMainScreen.js';
 import {TextInput} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
@@ -17,8 +17,8 @@ import {
   scaleFont,
   fullHeight,
   fullWidth,
-} from './Utility';
-const FilterModal = ({visible, onClose}) => {
+} from './Utility.js';
+const SearchTransanctionModal = ({visible, onClose}) => {
   const [selectedStatuses, setSelectedStatuses] = useState([]);
   const [textInput1, setTextInput1] = useState('');
   const [textInput2, setTextInput2] = useState('');
@@ -56,28 +56,31 @@ const FilterModal = ({visible, onClose}) => {
           translucent={false}
         />
         <View
-          style={{
-            padding: scale(20),
-            height: verticalScale(340),
-            backgroundColor: '#FFFF',
-            elevation: 4,
-            alignSelf: 'center',
-            width: scale(330),
-            borderRadius: verticalScale(10),
-          }}>
+          style={
+            styles.mainView
+            // padding: scale(20),
+            // height: verticalScale(340),
+            // backgroundColor: '#FFFF',
+            // elevation: 4,
+            // alignSelf: 'center',
+            // width: scale(330),
+            // borderRadius: verticalScale(10),
+          }>
           <View
-            style={{
-              marginBottom: verticalScale(20),
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}>
+            style={
+              styles.filterView
+              // marginBottom: verticalScale(20),
+              // flexDirection: 'row',
+              // justifyContent: 'space-between',
+            }>
             <Text
-              style={{
-                fontSize: scaleFont(18),
-                fontWeight: 'bold',
-                fontFamily: 'Inter-Bold',
-                color: '#1D1D1D',
-              }}>
+              style={
+                styles.textFilter
+                // fontSize: scaleFont(18),
+                // fontWeight: 'bold',
+                // fontFamily: 'Inter-Bold',
+                // color: '#1D1D1D',
+              }>
               Filters
             </Text>
             <View style={styles.cancel}>
@@ -96,22 +99,24 @@ const FilterModal = ({visible, onClose}) => {
           </View>
 
           <Text
-            style={{
-              marginBottom: verticalScale(10),
-              fontFamily: 'Inter-Regular',
-              color: '#727272',
-              fontSize: scaleFont(12),
-              lineHeight: verticalScale(16),
-            }}>
+            style={
+              styles.statusView
+              // marginBottom: verticalScale(10),
+              // fontFamily: 'Inter-Regular',
+              // color: '#727272',
+              // fontSize: scaleFont(12),
+              // lineHeight: verticalScale(16),
+            }>
             Status
           </Text>
           <View
-            style={{
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              justifyContent: 'space-around',
-            }}>
+            style={
+              styles.statusButtons
+              // flexDirection: 'row',
+              // flexWrap: 'wrap',
+              // alignItems: 'center',
+              // justifyContent: 'space-around',
+            }>
             {['Success', 'Pending', 'Refund', 'Reversal'].map(status => (
               <TouchableOpacity
                 key={status}
@@ -124,13 +129,8 @@ const FilterModal = ({visible, onClose}) => {
                   height: verticalScale(25),
                   borderRadius: verticalScale(24),
                   alignItems: 'center',
-                  // alignSelf: 'center',
                   paddingTop: verticalScale(6),
-                  // paddingBottom: verticalScale(6),
-                  // paddingLeft: scale(14),
-                  // paddingRight: scale(14),
                   marginBottom: verticalScale(12),
-                  // backgroundColor: 'red',
                 }}>
                 <Text
                   style={{
@@ -166,10 +166,7 @@ const FilterModal = ({visible, onClose}) => {
                 onChange={handleTextInput1}
                 mode="outlined"
                 style={{
-                  // marginBottom: 10,
                   alignSelf: 'center',
-                  // backgroundColor: '#FFFFFF',
-                  // width: '80%',
                   width: scale(140),
                   borderRadius: verticalScale(15),
                 }}
@@ -243,28 +240,45 @@ const FilterModal = ({visible, onClose}) => {
               </Text>
             </TouchableOpacity>
           </View>
-
-          {/* button containerends */}
-          {/* <View style={styles.cancel}>
-              <TouchableOpacity onPress={onClose}>
-                <Text
-                  style={{
-                    textAlign: 'right',
-                    //marginTop: 20,
-                    color: 'blue',
-                    marginRight: scale(20),
-                  }}>
-                  <Icon name="cancel" size={30} color={'black'} />
-                </Text>
-              </TouchableOpacity>
-            </View>
-             */}
         </View>
       </View>
     </Modal>
   );
 };
 const styles = StyleSheet.create({
+  mainView: {
+    padding: scale(20),
+    height: verticalScale(340),
+    backgroundColor: '#FFFF',
+    elevation: 4,
+    alignSelf: 'center',
+    width: scale(330),
+    borderRadius: verticalScale(10),
+  },
+  filterView: {
+    marginBottom: verticalScale(20),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  textFilter: {
+    fontSize: scaleFont(18),
+    fontWeight: 'bold',
+    fontFamily: 'Inter-Bold',
+    color: '#1D1D1D',
+  },
+  statusView: {
+    marginBottom: verticalScale(10),
+    fontFamily: 'Inter-Regular',
+    color: '#727272',
+    fontSize: scaleFont(12),
+    lineHeight: verticalScale(16),
+  },
+  statusButtons: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
   range: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -335,4 +349,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#D7D7D7',
   },
 });
-export default FilterModal;
+export default SearchTransanctionModal;

@@ -1,4 +1,11 @@
-import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+  Modal,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -9,19 +16,23 @@ import {
   fullHeight,
   fullWidth,
 } from './Utility';
-import BrandVoucher from './BrandVoucher';
-const SuccessPage = ({navigation}) => {
+
+import BrandVoucherMainScreen from './BrandVoucherMainScreen.js';
+import {useNavigation} from '@react-navigation/native';
+const TransactionStatusModal = ({visible, onClose}) => {
+  const navigation = useNavigation();
   const renderItem = ({item}) => (
     <View
-      style={{
-        width: scale(280),
-        flexDirection: 'row',
-        padding: 4,
-        alignSelf: 'center',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+      style={
+        styles.cardView
+        // width: scale(280),
+        // flexDirection: 'row',
+        // padding: 4,
+        // alignSelf: 'center',
+        // justifyContent: 'space-between',
+        // alignItems: 'center',
         //marginTop: 5,
-      }}>
+      }>
       <Text style={styles.item}>{item.key}:</Text>
       <Text style={[styles.item2, item.key === 'Amount' && styles.amount]}>
         {item.value}
@@ -37,57 +48,63 @@ const SuccessPage = ({navigation}) => {
   ];
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            width: scale(160),
-          }}>
-          <TouchableOpacity>
-            <Icon
-              onPress={() => navigation.goBack()}
-              name="angle-left"
-              size={30}
-              style={styles.arrow}
-              color={'#0033A1'}
-            />
-          </TouchableOpacity>
-          <Text style={styles.titleText}>eGift Voucher</Text>
+    <Modal
+      visible={visible}
+      animationType="slide"
+      transparent={true}
+      onRequestClose={onClose}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: scale(160),
+            }}>
+            <TouchableOpacity>
+              <Icon
+                onPress={onClose}
+                name="angle-left"
+                size={30}
+                style={styles.arrow}
+                color={'#0033A1'}
+              />
+            </TouchableOpacity>
+            <Text style={styles.titleText}>eGift Voucher</Text>
+          </View>
         </View>
-      </View>
 
-      {/*  */}
-      <View style={styles.card}>
-        <Text style={styles.statusText}>Transaction Successful</Text>
-        <View style={styles.dashedLine}>{/* Your content here */}</View>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={item => item.key}
-        />
-      </View>
-      {/* button */}
-      <View style={styles.button}>
-        <TouchableOpacity
-          activeOpacity={1}
-          onPress={() => navigation.navigate(BrandVoucher)}>
-          <Text style={styles.buttonText}>Close</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.iconContainer}>
-        <View style={styles.iconBorder}>
-          <View style={[styles.iconCircle, styles.iconMargin]}>
-            <Text style={styles.iconText}>
-              <Icon3 name="check-bold" size={90} />
-            </Text>
+        {/*  */}
+        <View style={styles.card}>
+          <Text style={styles.statusText}>Transaction Successful</Text>
+          <View style={styles.dashedLine}>{/* Your content here */}</View>
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            data={data}
+            renderItem={renderItem}
+            keyExtractor={item => item.key}
+          />
+        </View>
+        {/* button */}
+        <View style={styles.button}>
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={() => navigation.navigate(BrandVoucherMainScreen)}>
+            <Text style={styles.buttonText}>Close</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.iconContainer}>
+          <View style={styles.iconBorder}>
+            <View style={[styles.iconCircle, styles.iconMargin]}>
+              <Text style={styles.iconText}>
+                <Icon3 name="check-bold" size={90} />
+              </Text>
+            </View>
           </View>
         </View>
       </View>
-    </View>
+    </Modal>
   );
 };
 
@@ -141,7 +158,14 @@ const styles = StyleSheet.create({
     elevation: 2,
     //margin: 10,
   },
-
+  cardView: {
+    width: scale(280),
+    flexDirection: 'row',
+    padding: 4,
+    alignSelf: 'center',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
   amount: {
     fontSize: scaleFont(16),
     color: '#0033A1',
@@ -232,4 +256,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SuccessPage;
+export default TransactionStatusModal;
