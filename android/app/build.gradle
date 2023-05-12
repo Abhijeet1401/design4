@@ -80,7 +80,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 project.ext.react = [entryFile: "index.js", enableHermes: true]
 project.ext.react = [
     enableHermes: true,  // clean and rebuild if changing
-    iconFontNames:['FontAwesome.ttf','AntDesign.ttf','MaterialIcons.ttf','FontAwesome5.ttf','Feather.ttf']
+    iconFontNames:['FontAwesome.ttf','AntDesign.ttf','MaterialIcons.ttf','FontAwesome5.ttf','Feather.ttf','Octicons.ttf']
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"

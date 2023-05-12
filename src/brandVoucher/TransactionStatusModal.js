@@ -103,6 +103,11 @@ const TransactionStatusModal = ({visible, onClose}) => {
             </View>
           </View>
         </View>
+        <TouchableOpacity>
+          <View>
+            <Text>Next Module</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </Modal>
   );

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import CcIPinModal from './CcIPinModal';
+import RemitterDetails from './RemitterDetails';
 import {TextInput} from 'react-native-paper';
 import {
   verticalScale,
@@ -19,12 +19,15 @@ import {
   fullWidth,
 } from './Utility';
 import {useNavigation} from '@react-navigation/native';
-import BillsPaymentStatus from './BillsPaymentStatus';
+import CashTransfer from './CashTransfer';
+import AddBeneficiaryScreen from './AddBeneficiaryScreen';
+import BeneficiaryListScreen from './BeneficiaryListScreen';
 
-const CcBillsPayForm = () => {
+const CashFundTransfer = () => {
   const [textInput1, setTextInput1] = useState('');
   const [textInput2, setTextInput2] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [textInput3, setTextInput3] = useState('');
+
   //  handle TextInput
   const handleTextInput1Change = text => {
     setTextInput1(text);
@@ -32,6 +35,9 @@ const CcBillsPayForm = () => {
 
   const handleTextInput2Change = text => {
     setTextInput2(text);
+  };
+  const handleTextInput3Change = text => {
+    setTextInput3(text);
   };
   const navigation = useNavigation();
   return (
@@ -45,61 +51,77 @@ const CcBillsPayForm = () => {
             onPress={() => navigation.goBack()}>
             <Icon name="angle-left" size={30} color={'#0033A1'} />
           </TouchableOpacity>
-          <Text style={styles.titleText}>Credit Card Bills Pay</Text>
+          <Text style={styles.titleText}>Fund Transfer</Text>
         </View>
       </View>
-      {/* information */}
-      <View style={styles.informationContainer}>
-        <Text style={styles.cardInformation}>
-          Pay for all Visa, Mastercard, American Express, Diners & Rupay Credit
-          Cards issued by all major banks.
-        </Text>
-      </View>
+
       {/* input field */}
-      <TouchableOpacity activeOpacity={1} onPress={() => Keyboard.dismiss()}>
-        <View style={styles.VoucherInput}>
+      <TouchableOpacity
+        style={{flex: 1}}
+        activeOpacity={1}
+        onPress={() => Keyboard.dismiss()}>
+        <View style={styles.FundTransferInput}>
           <TextInput
-            label="Credit Cards Number"
+            label="Beneficiart Name"
             textColor="#1D1D1D"
             value={textInput1}
+            keyboardType="numeric"
             onChange={handleTextInput1Change}
             mode="outlined"
-            style={
-              styles.textinputBox
-              // backgroundColor: '#FFFFFF',
-              // fontFamily: 'Inter-Medium',
-            }
+            style={styles.textinputBox}
             activeOutlineColor="#1D1D1D"
           />
 
+          <View>
+            <TextInput
+              label="Remittance Reason"
+              textColor="#1D1D1D"
+              // value={textInput4}
+              // keyboardType="numeric"
+              // onChange={handleTextInput4Change}
+              mode="outlined"
+              style={styles.textinputBox}
+              activeOutlineColor="#1D1D1D"
+            />
+            <TouchableOpacity>
+              <View style={styles.dropDownIcon}>
+                <Icon
+                  name="caret-down"
+                  color="#000000"
+                  size={20}
+                  style={{textAlign: 'right'}}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
           <TextInput
-            label="Amount (INR)"
+            label="Amount"
             textColor="#1D1D1D"
             value={textInput2}
+            keyboardType="numeric"
             onChange={handleTextInput2Change}
             mode="outlined"
-            style={
-              styles.textinputBox
-              // backgroundColor: '#FFFFFF',
-              // fontFamily: 'Inter-Medium',
-            }
+            style={styles.textinputBox}
+            activeOutlineColor="#1D1D1D"
+          />
+          <TextInput
+            label="Amount"
+            textColor="#1D1D1D"
+            value={textInput3}
+            keyboardType="numeric"
+            onChange={handleTextInput3Change}
+            mode="outlined"
+            style={styles.textinputBox}
             activeOutlineColor="#1D1D1D"
           />
         </View>
 
         {/* button */}
         <View style={styles.button}>
-          <TouchableOpacity onPress={() => setIsModalOpen(true)}>
-            <Text style={styles.buttonText}>Pay</Text>
+          <TouchableOpacity activeOpacity={1}>
+            <Text style={styles.buttonText}>Transfer</Text>
           </TouchableOpacity>
         </View>
-        {/* show IpinModal */}
-        {isModalOpen && (
-          <CcIPinModal
-            visible={isModalOpen}
-            onClose={() => setIsModalOpen(false)}
-          />
-        )}
       </TouchableOpacity>
     </View>
   );
@@ -135,25 +157,16 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red',
   },
 
-  // information
-  informationContainer: {
-    alignSelf: 'center',
-    width: scale(327),
-    fontSize: scaleFont(12),
-    fontFamily: 'Inter-Regular',
-  },
-  cardInformation: {
-    color: '#727272',
-  },
   // textInput
-  VoucherInput: {
+  FundTransferInput: {
     justifyContent: 'center',
     alignSelf: 'center',
     width: scale(324),
-    //marginTop: verticalScale(38),
+    // marginTop: verticalScale(30),
   },
   textinputBox: {
-    marginTop: verticalScale(24),
+    marginTop: verticalScale(26),
+    // marginTop: verticalScale(24),
     backgroundColor: '#FFFFFF',
     fontFamily: 'Inter-Medium',
   },
@@ -164,7 +177,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: verticalScale(6),
     backgroundColor: '#0033A1',
-    marginTop: verticalScale(38),
+    marginTop: verticalScale(30),
   },
   buttonText: {
     color: '#FFFFFF',
@@ -173,5 +186,14 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontFamily: 'Inter-Regular',
   },
+  dropDownTypeContainer: {
+    width: scale(320),
+    //flexDirection: 'row',
+  },
+  dropDownIcon: {
+    position: 'absolute',
+    bottom: 12,
+    width: scale(300),
+  },
 });
-export default CcBillsPayForm;
+export default CashFundTransfer;

@@ -13,11 +13,25 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 // import IPinModal from '../brandVoucher/IPinModal';
 // import TransactionStatusModal from '../brandVoucher/TransactionStatusModal';
 // import BrandVoucherMainScreen from '../brandVoucher/BrandVoucherMainScreen.js';
-import CreditCardMainScreen from '../creditCard/CreditCardMainScreen';
-import CcBillsPayForm from '../creditCard/CcBillsPayForm';
-import BillsPaymentStatus from '../creditCard/BillsPaymentStatus';
-import PreviousTransanctions from '../creditCard/PreviousTransanctions';
-import IPinModal from '../creditCard/IPinModal';
+// import CreditCardMainScreen from '../creditCard/CreditCardMainScreen';
+// import CcBillsPayForm from '../creditCard/CcBillsPayForm';
+// import BillsPaymentStatus from '../creditCard/BillsPaymentStatus';
+// import PreviousTransanctions from '../creditCard/PreviousTransanctions';
+// import CcIPinModal from '../creditCard/CcIPinModal';
+// import ReportingMainScreen from '../reporting/ReportingMainScreen';
+// import DigiKendraMappingForm from '../reporting/DigiKendraMappingForm';
+// import ReportDigiKendra from '../reporting/ReportDigiKendra';
+// import LoadMoneyDgKendra from '../reporting/LoadMoneyDgKendra';
+import MoneyTransferMainScreen from '../nepalMoney/MoneyTransferMainScreen';
+import RemitterDetails from '../nepalMoney/RemitterDetails';
+import Transactions from '../nepalMoney/Transactions';
+import RegisterRemitter from '../nepalMoney/RegisterRemitter';
+import BeneficiaryListScreen from '../nepalMoney/BeneficiaryListScreen';
+import AddBeneficiaryScreen from '../nepalMoney/AddBeneficiaryScreen';
+import CashTransfer from '../nepalMoney/CashTransfer';
+import BankTransfer from '../nepalMoney/BankTransfer';
+import CashFundTransfer from '../nepalMoney/CashFundTransfer';
+import BankFundTransfer from '../nepalMoney/BankFundTransfer';
 
 // import Calender from '../Screen7/Calender';
 // import ExploreUI from '../Screen6/ExploreUI';
@@ -180,7 +194,7 @@ const Navigation = () => {
           options={{headerShown: false}}
         /> */}
 
-        <Stack.Screen
+        {/* <Stack.Screen
           name="CreditCardMainScreen"
           component={CreditCardMainScreen}
           options={{headerShown: false}}
@@ -201,13 +215,83 @@ const Navigation = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="IPinModal"
-          component={IPinModal}
+          name="CcIPinModal"
+          component={CcIPinModal}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="ReportingMainScreen"
+          component={ReportingMainScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="DigiKendraMappingForm"
+          component={DigiKendraMappingForm}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ReportDigiKendra"
+          component={ReportDigiKendra}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="LoadMoneyDgKendra"
+          component={LoadMoneyDgKendra}
+          options={{headerShown: false}}
+        /> */}
+        <Stack.Screen
+          name="MoneyTransferMainScreen"
+          component={MoneyTransferMainScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="RemitterDetails"
+          component={RemitterDetails}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Transactions"
+          component={Transactions}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="RegisterRemitter"
+          component={RegisterRemitter}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="BeneficiaryListScreen"
+          component={BeneficiaryListScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="AddBeneficiaryScreen"
+          component={AddBeneficiaryScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="CashTransfer"
+          component={CashTransfer}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="BankTransfer"
+          component={BankTransfer}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="CashFundTransfer"
+          component={CashFundTransfer}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="BankFundTransfer"
+          component={BankFundTransfer}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
-
 export default Navigation;

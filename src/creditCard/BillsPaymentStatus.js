@@ -19,6 +19,7 @@ import {
 
 import {useNavigation} from '@react-navigation/native';
 import CreditCardMainScreen from './CreditCardMainScreen';
+import ReportingMainScreen from '../reporting/ReportingMainScreen';
 const BillsPaymentStatus = ({visible, onClose}) => {
   const navigation = useNavigation();
   const renderItem = ({item}) => (

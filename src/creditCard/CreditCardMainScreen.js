@@ -22,6 +22,7 @@ import CreditCardBillsPayForm from './CcBillsPayForm';
 import CcBillsPayForm from './CcBillsPayForm';
 import Navigation from '../MainNavigation/Navigation';
 import PreviousTransanctions from './PreviousTransanctions';
+import ReportingMainScreen from '../reporting/ReportingMainScreen';
 
 const CreditCardMainScreen = props => {
   return (
@@ -58,6 +59,14 @@ const CreditCardMainScreen = props => {
         onPress={() => props.navigation.navigate(PreviousTransanctions)}>
         <View style={styles.linkPreviousTxn}>
           <Text style={styles.prevTxnText}>See Previous Transactions</Text>
+        </View>
+      </TouchableOpacity>
+
+      {/* Next Module */}
+      <TouchableOpacity
+        onPress={() => props.navigation.navigate(ReportingMainScreen)}>
+        <View style={styles.linkPreviousTxn}>
+          <Text style={styles.prevTxnText}>Next Module</Text>
         </View>
       </TouchableOpacity>
     </View>

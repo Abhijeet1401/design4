@@ -17,7 +17,7 @@ import {
   fullHeight,
   fullWidth,
 } from './Utility';
-const IPinModal = ({visible, onClose}) => {
+const CcIPinModal = ({visible, onClose}) => {
   const [pin, setPin] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
@@ -220,4 +220,4 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
 });
-export default IPinModal;
+export default CcIPinModal;
