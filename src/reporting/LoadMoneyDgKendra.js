@@ -27,6 +27,12 @@ import {
 import Navigation from '../MainNavigation/Navigation';
 import {useState} from 'react';
 import DigiKendraMappingForm from './DigiKendraMappingForm';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+const theme = {
+  ...DefaultTheme,
+  dark: true,
+  // Add any additional dark theme configurations if needed
+};
 
 const iconItem1 = <Image source={require('./Images/avatar2.jpg')} />;
 const iconItem2 = <Image source={require('./Images/avatar1.jpg')} />;
@@ -227,6 +233,7 @@ const LoadMoneyDgKendra = ({navigation}) => {
           <View style={styles.loadMoneyContainer}>
             <Text style={styles.topupTitle}>Top Up:</Text>
             <TextInput
+              theme={theme}
               label="Amount"
               textColor="#1D1D1D"
               value={amount}
@@ -243,6 +250,7 @@ const LoadMoneyDgKendra = ({navigation}) => {
 
             <TextInput
               label="Confirm Amount"
+              theme={theme}
               textColor="#1D1D1D"
               value={amount}
               keyboardType="numeric"

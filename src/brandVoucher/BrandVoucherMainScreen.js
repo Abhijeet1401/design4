@@ -36,6 +36,7 @@ import {
   fullWidth,
 } from './Utility';
 import CheckVoucherBalanceFormModal from './CheckVoucherBalanceFormModal';
+import CreditCardMainScreen from '../creditCard/CreditCardMainScreen';
 const data = [
   {
     id: 1,
@@ -622,6 +623,14 @@ const BrandVoucherMainScreen = props => {
           //  statusbar={StatusBar}
         />
       )}
+      <View>
+        <TouchableOpacity
+          onPress={() => props.navigation.navigate(CreditCardMainScreen)}>
+          <View style={styles.linkPreviousTxn}>
+            <Text style={styles.prevTxnText}>Next Module</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -887,6 +896,15 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Medium',
     color: '#1D1D1D',
     letterSpacing: 0.05,
+  },
+  linkPreviousTxn: {
+    marginTop: verticalScale(30),
+    alignSelf: 'center',
+  },
+  prevTxnText: {
+    fontFamily: 'Inter-Bold',
+    color: '#0033A1',
+    textDecorationLine: 'underline',
   },
 });
 export default BrandVoucherMainScreen;

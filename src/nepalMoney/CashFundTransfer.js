@@ -11,6 +11,7 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import RemitterDetails from './RemitterDetails';
 import {TextInput} from 'react-native-paper';
+
 import {
   verticalScale,
   scale,
@@ -22,6 +23,12 @@ import {useNavigation} from '@react-navigation/native';
 import CashTransfer from './CashTransfer';
 import AddBeneficiaryScreen from './AddBeneficiaryScreen';
 import BeneficiaryListScreen from './BeneficiaryListScreen';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+const theme = {
+  ...DefaultTheme,
+  dark: true,
+  // Add any additional dark theme configurations if needed
+};
 
 const CashFundTransfer = () => {
   const [textInput1, setTextInput1] = useState('');
@@ -62,6 +69,7 @@ const CashFundTransfer = () => {
         onPress={() => Keyboard.dismiss()}>
         <View style={styles.FundTransferInput}>
           <TextInput
+            theme={theme}
             label="Beneficiart Name"
             textColor="#1D1D1D"
             value={textInput1}
@@ -74,6 +82,7 @@ const CashFundTransfer = () => {
 
           <View>
             <TextInput
+              theme={theme}
               label="Remittance Reason"
               textColor="#1D1D1D"
               // value={textInput4}
@@ -95,6 +104,7 @@ const CashFundTransfer = () => {
             </TouchableOpacity>
           </View>
           <TextInput
+            theme={theme}
             label="Amount"
             textColor="#1D1D1D"
             value={textInput2}
@@ -105,6 +115,7 @@ const CashFundTransfer = () => {
             activeOutlineColor="#1D1D1D"
           />
           <TextInput
+            theme={theme}
             label="Amount"
             textColor="#1D1D1D"
             value={textInput3}

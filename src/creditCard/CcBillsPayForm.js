@@ -20,6 +20,12 @@ import {
 } from './Utility';
 import {useNavigation} from '@react-navigation/native';
 import BillsPaymentStatus from './BillsPaymentStatus';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+const theme = {
+  ...DefaultTheme,
+  dark: true,
+  // Add any additional dark theme configurations if needed
+};
 
 const CcBillsPayForm = () => {
   const [textInput1, setTextInput1] = useState('');
@@ -59,6 +65,7 @@ const CcBillsPayForm = () => {
       <TouchableOpacity activeOpacity={1} onPress={() => Keyboard.dismiss()}>
         <View style={styles.VoucherInput}>
           <TextInput
+            theme={theme}
             label="Credit Cards Number"
             textColor="#1D1D1D"
             value={textInput1}
@@ -73,6 +80,7 @@ const CcBillsPayForm = () => {
           />
 
           <TextInput
+            theme={theme}
             label="Amount (INR)"
             textColor="#1D1D1D"
             value={textInput2}

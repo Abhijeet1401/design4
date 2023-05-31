@@ -2,26 +2,26 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-// import CheckVoucherBalanceFormModal from '../brandVoucher/CheckVoucherBalanceFormModal';
-// import TransanctionModal from '../brandVoucher/TransanctionModal';
-// import ShowVoucherBalanceModal from '../brandVoucher/ShowVoucherBalanceModal.js';
-// import BrandVoucher2 from '../brandVoucher/BrandVoucher2';
-// import FashionLifeStyleScreen from '../brandVoucher/FashionLifeStyleScreen';
-// import EGiftVoucherFormModal from '../brandVoucher/EGiftVoucherFormModal';
-// import TermCondition from '../brandVoucher/TermCondition';
-// import BulkEgift from '../brandVoucher/BulkEgift';
-// import IPinModal from '../brandVoucher/IPinModal';
-// import TransactionStatusModal from '../brandVoucher/TransactionStatusModal';
-// import BrandVoucherMainScreen from '../brandVoucher/BrandVoucherMainScreen.js';
-// import CreditCardMainScreen from '../creditCard/CreditCardMainScreen';
-// import CcBillsPayForm from '../creditCard/CcBillsPayForm';
-// import BillsPaymentStatus from '../creditCard/BillsPaymentStatus';
-// import PreviousTransanctions from '../creditCard/PreviousTransanctions';
-// import CcIPinModal from '../creditCard/CcIPinModal';
-// import ReportingMainScreen from '../reporting/ReportingMainScreen';
-// import DigiKendraMappingForm from '../reporting/DigiKendraMappingForm';
-// import ReportDigiKendra from '../reporting/ReportDigiKendra';
-// import LoadMoneyDgKendra from '../reporting/LoadMoneyDgKendra';
+import CheckVoucherBalanceFormModal from '../brandVoucher/CheckVoucherBalanceFormModal';
+import TransanctionModal from '../brandVoucher/TransanctionModal';
+import ShowVoucherBalanceModal from '../brandVoucher/ShowVoucherBalanceModal.js';
+import BrandVoucher2 from '../brandVoucher/BrandVoucher2';
+import FashionLifeStyleScreen from '../brandVoucher/FashionLifeStyleScreen';
+import EGiftVoucherFormModal from '../brandVoucher/EGiftVoucherFormModal';
+import TermCondition from '../brandVoucher/TermCondition';
+import BulkEgift from '../brandVoucher/BulkEgift';
+import IPinModal from '../brandVoucher/IPinModal';
+import TransactionStatusModal from '../brandVoucher/TransactionStatusModal';
+import BrandVoucherMainScreen from '../brandVoucher/BrandVoucherMainScreen.js';
+import CreditCardMainScreen from '../creditCard/CreditCardMainScreen';
+import CcBillsPayForm from '../creditCard/CcBillsPayForm';
+import BillsPaymentStatus from '../creditCard/BillsPaymentStatus';
+import PreviousTransanctions from '../creditCard/PreviousTransanctions';
+import CcIPinModal from '../creditCard/CcIPinModal';
+import ReportingMainScreen from '../reporting/ReportingMainScreen';
+import DigiKendraMappingForm from '../reporting/DigiKendraMappingForm';
+import ReportDigiKendra from '../reporting/ReportDigiKendra';
+import LoadMoneyDgKendra from '../reporting/LoadMoneyDgKendra';
 import MoneyTransferMainScreen from '../nepalMoney/MoneyTransferMainScreen';
 import RemitterDetails from '../nepalMoney/RemitterDetails';
 import Transactions from '../nepalMoney/Transactions';
@@ -32,7 +32,19 @@ import CashTransfer from '../nepalMoney/CashTransfer';
 import BankTransfer from '../nepalMoney/BankTransfer';
 import CashFundTransfer from '../nepalMoney/CashFundTransfer';
 import BankFundTransfer from '../nepalMoney/BankFundTransfer';
-
+import ContactsMainScreen from '../contacts/ContactsMainScreen';
+import Dash from '../contacts/Dash';
+import Contacts from '../contacts/Contacts';
+import Nearby from '../contacts/Nearby';
+import Profile from '../contacts/Profile';
+import Explore from '../contacts/Explore';
+import AddContactMainScreen from '../contacts/AddContactMainScreen';
+import ContactDetails from '../contacts/ContactDetails';
+import PaymentAccounts from '../contacts/PaymentAccounts';
+import Addresses from '../contacts/Addresses';
+import RegistrationInformation from '../contacts/RegistrationInformation';
+import Notes from '../contacts/Notes';
+import AddBulkContact from '../contacts/AddBulkContact';
 // import Calender from '../Screen7/Calender';
 // import ExploreUI from '../Screen6/ExploreUI';
 // import MyLoan from '../Screen4/MyLoan';
@@ -56,7 +68,7 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="CreditCardMainScreen">
+      <Stack.Navigator initialRouteName="BrandVoucherMainScreen">
         {/* <Stack.Screen
           name="Calender"
           component={Calender}
@@ -124,7 +136,7 @@ const Navigation = () => {
           options={{headerShown: false}}
         /> */}
 
-        {/* <Stack.Screen
+        <Stack.Screen
           name="BrandVoucherMainScreen"
           component={BrandVoucherMainScreen}
           options={{headerShown: false}}
@@ -154,7 +166,7 @@ const Navigation = () => {
           name="EGiftVoucherFormModal"
           component={EGiftVoucherFormModal}
           options={{headerShown: false}}
-        /> */}
+        />
 
         {/* <Stack.Screen
           name="BrandVoucher2"
@@ -171,7 +183,7 @@ const Navigation = () => {
             component={ShowVoucherBalance}
             options={{headerShown: false}}
           /> */}
-        {/* <Stack.Screen
+        <Stack.Screen
           name="TransanctionModal"
           component={TransanctionModal}
           options={{headerShown: false}}
@@ -192,9 +204,9 @@ const Navigation = () => {
           name="BulkEgift"
           component={BulkEgift}
           options={{headerShown: false}}
-        /> */}
+        />
 
-        {/* <Stack.Screen
+        <Stack.Screen
           name="CreditCardMainScreen"
           component={CreditCardMainScreen}
           options={{headerShown: false}}
@@ -239,7 +251,7 @@ const Navigation = () => {
           name="LoadMoneyDgKendra"
           component={LoadMoneyDgKendra}
           options={{headerShown: false}}
-        /> */}
+        />
         <Stack.Screen
           name="MoneyTransferMainScreen"
           component={MoneyTransferMainScreen}
@@ -288,6 +300,74 @@ const Navigation = () => {
         <Stack.Screen
           name="BankFundTransfer"
           component={BankFundTransfer}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ContactsMainScreen"
+          component={ContactsMainScreen}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Dash"
+          component={Dash}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Contacts"
+          component={Contacts}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Explore"
+          component={Explore}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Nearby"
+          component={Nearby}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="AddContactMainScreen"
+          component={AddContactMainScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ContactDetails"
+          component={ContactDetails}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="PaymentAccounts"
+          component={PaymentAccounts}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Addresses"
+          component={Addresses}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="RegistrationInformation"
+          component={RegistrationInformation}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Notes"
+          component={Notes}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="AddBulkContact"
+          component={AddBulkContact}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

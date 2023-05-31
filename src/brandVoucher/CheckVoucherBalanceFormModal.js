@@ -18,6 +18,12 @@ import {
   fullHeight,
   fullWidth,
 } from './Utility';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+const theme = {
+  ...DefaultTheme,
+  dark: true,
+  // Add any additional dark theme configurations if needed
+};
 
 const CheckVoucherBalanceFormModal = ({visible, onClose}) => {
   const [textInput1, setTextInput1] = useState('');
@@ -57,6 +63,7 @@ const CheckVoucherBalanceFormModal = ({visible, onClose}) => {
         <TouchableOpacity activeOpacity={1} onPress={() => Keyboard.dismiss()}>
           <View style={styles.VoucherInput}>
             <TextInput
+              theme={theme}
               label="Gift card Number"
               textColor="#1D1D1D"
               value={textInput1}
@@ -71,6 +78,7 @@ const CheckVoucherBalanceFormModal = ({visible, onClose}) => {
             />
 
             <TextInput
+              theme={theme}
               label="Enter Pin,if provided"
               textColor="#1D1D1D"
               value={textInput2}

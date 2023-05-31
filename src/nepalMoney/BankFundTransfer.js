@@ -23,6 +23,12 @@ import {useNavigation} from '@react-navigation/native';
 import CashTransfer from './CashTransfer';
 import AddBeneficiaryScreen from './AddBeneficiaryScreen';
 import BeneficiaryListScreen from './BeneficiaryListScreen';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+const theme = {
+  ...DefaultTheme,
+  dark: true,
+  // Add any additional dark theme configurations if needed
+};
 
 const BankFundTransfer = () => {
   const [textInput1, setTextInput1] = useState('');
@@ -72,6 +78,7 @@ const BankFundTransfer = () => {
           <View style={styles.FundTransferInput}>
             <TextInput
               label="Account Number"
+              theme={theme}
               textColor="#1D1D1D"
               value={textInput1}
               keyboardType="numeric"
@@ -82,6 +89,7 @@ const BankFundTransfer = () => {
             />
             <TextInput
               label="Bank Name"
+              theme={theme}
               textColor="#1D1D1D"
               value={textInput2}
               onChange={handleTextInput2Change}
@@ -91,6 +99,7 @@ const BankFundTransfer = () => {
             />
             <TextInput
               label="Beneficiart Name"
+              theme={theme}
               textColor="#1D1D1D"
               value={textInput3}
               keyboardType="numeric"
@@ -102,6 +111,7 @@ const BankFundTransfer = () => {
 
             <View>
               <TextInput
+                theme={theme}
                 label="Remittance Reason"
                 textColor="#1D1D1D"
                 // value={textInput4}
@@ -124,6 +134,7 @@ const BankFundTransfer = () => {
             </View>
             <TextInput
               label="Amount"
+              theme={theme}
               textColor="#1D1D1D"
               value={textInput4}
               keyboardType="numeric"
@@ -134,6 +145,7 @@ const BankFundTransfer = () => {
             />
             <TextInput
               label="Confirm Amount"
+              theme={theme}
               textColor="#1D1D1D"
               value={textInput5}
               keyboardType="numeric"

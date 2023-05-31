@@ -17,7 +17,7 @@ import Icon4 from 'react-native-vector-icons/Ionicons';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import BusinessWallet from '../Screen3/BusinessWallet';
 import Rating from '../Screens2/Rating';
-const ImagePickerApp = ({navigation}) => {
+const OpenCamera = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [bgColor, setBgColor] = useState('white');
   const [filePath, setFilePath] = useState({});
@@ -114,29 +114,6 @@ const ImagePickerApp = ({navigation}) => {
   return (
     <View style={{}}>
       <View style={styles.container}>
-        {/* <Image
-          source={{
-            uri: 'data:image/jpeg;base64,' + filePath.data,
-          }}
-          style={styles.imageStyle}
-          
-        /> */}
-        <View
-          style={{
-            justifyContent: 'center',
-            alignSelf: 'center',
-            marginTop: 10,
-          }}>
-          <Text
-            style={{
-              marginTop: 20,
-              color: 'black',
-              fontSize: 18,
-              fontWeight: 'bold',
-            }}>
-            Camera & Gallery Picker
-          </Text>
-        </View>
         {filePath && (
           <Image source={{uri: filePath.uri}} style={styles.imageStyle} />
         )}
@@ -162,7 +139,7 @@ const ImagePickerApp = ({navigation}) => {
               </TouchableOpacity>
             </View>
           ))}
-          {arr.length < 6 ? (
+          {/* {arr.length < 6 ? (
             <TouchableOpacity
               onPress={() => setModalVisible(true)}
               style={{
@@ -179,7 +156,7 @@ const ImagePickerApp = ({navigation}) => {
                 color={'black'}
               />
             </TouchableOpacity>
-          ) : null}
+          ) : null} */}
         </View>
         {/* Header with camera icon */}
 
@@ -264,31 +241,10 @@ const ImagePickerApp = ({navigation}) => {
           </View>
         </Modal>
       </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          marginTop: 550,
-        }}>
-        <TouchableOpacity onPress={() => navigation.navigate(Rating)}>
-          <Icon4
-            name="arrow-back"
-            size={26}
-            style={{marginLeft: 20, color: 'black', fontWeight: 'bold'}}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate(BusinessWallet)}>
-          <Icon4
-            name="arrow-forward"
-            size={26}
-            style={{marginRight: 40, color: 'black', fontWeight: 'bold'}}
-          />
-        </TouchableOpacity>
-      </View>
     </View>
   );
 };
 const styles = StyleSheet.create({
   container: {},
 });
-export default ImagePickerApp;
+export default OpenCamera;

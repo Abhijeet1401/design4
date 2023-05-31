@@ -72,63 +72,63 @@ const ReportDigiKendra = ({navigation}) => {
     setShowDownIcon(!showDownIcon);
   };
 
-  // render Item1
-  //   const renderItem = ({item, index}) => {
-  //     return (
-  //       <TouchableOpacity
-  //         activeOpacity={1}
-  //         key={index}
-  //         style={styles.ReportContainer}>
-  //         <View style={{height: verticalScale(146)}}>
-  //           <View style={styles.reportView}>
-  //             {/* Top View */}
-  //             <View style={styles.topInfo}>
-  //               <View
-  //                 style={{
-  //                   width: scale(20),
-  //                   height: scale(20),
-  //                   backgroundColor: '#0488484C',
-  //                   borderRadius: 10,
-  //                 }}>
-  //                 <View>
-  //                   <Icon6
-  //                     name="arrow-up-right"
-  //                     color="#048848"
-  //                     size={20}
-  //                     style={styles.reportArrow}
-  //                   />
-  //                 </View>
-  //               </View>
-  //               <View style={{}}>
-  //                 <Text
-  //                   style={{
-  //                     color: '#048848',
-  //                     fontFamily: 'Inter-SemiBold',
-  //                     fontSize: scaleFont(12),
-  //                   }}>
-  //                   34.7%
-  //                 </Text>
-  //                 <Text
-  //                   style={{
-  //                     fontSize: scaleFont(7),
-  //                     fontFamily: 'Inter-SemiBold',
-  //                     color: '#727272',
-  //                   }}>
-  //                   {item.per}
-  //                 </Text>
-  //               </View>
-  //             </View>
-  //             {/* bottom View */}
+  //render Item1
+  const renderItem = ({item, index}) => {
+    return (
+      <TouchableOpacity
+        activeOpacity={1}
+        key={index}
+        style={styles.ReportContainer}>
+        <View style={{height: verticalScale(146)}}>
+          <View style={styles.reportView}>
+            {/* Top View */}
+            <View style={styles.topInfo}>
+              <View
+                style={{
+                  width: scale(20),
+                  height: scale(20),
+                  backgroundColor: '#0488484C',
+                  borderRadius: 10,
+                }}>
+                <View>
+                  <Icon6
+                    name="arrow-up-right"
+                    color="#048848"
+                    size={20}
+                    style={styles.reportArrow}
+                  />
+                </View>
+              </View>
+              <View style={{}}>
+                <Text
+                  style={{
+                    color: '#048848',
+                    fontFamily: 'Inter-SemiBold',
+                    fontSize: scaleFont(12),
+                  }}>
+                  34.7%
+                </Text>
+                <Text
+                  style={{
+                    fontSize: scaleFont(7),
+                    fontFamily: 'Inter-SemiBold',
+                    color: '#727272',
+                  }}>
+                  {item.per}
+                </Text>
+              </View>
+            </View>
+            {/* bottom View */}
 
-  //             <View style={styles.bottomInfo}>
-  //               <Text style={styles.bottomTextInfo}>{item.title}</Text>
-  //               <Text style={styles.amountInfo}>{item.amount}</Text>
-  //             </View>
-  //           </View>
-  //         </View>
-  //       </TouchableOpacity>
-  //     );
-  //   };
+            <View style={styles.bottomInfo}>
+              <Text style={styles.bottomTextInfo}>{item.title}</Text>
+              <Text style={styles.amountInfo}>{item.amount}</Text>
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  };
   // render Item 2
   const renderItem2 = ({item}) => (
     <View
@@ -218,70 +218,16 @@ const ReportDigiKendra = ({navigation}) => {
           </View>
         </View>
         {/* flat list moving data */}
-        <ScrollView
-          horizontal={true}
-          style={{width: scale(330), alignSelf: 'center'}}>
-          <View
-            style={{
-              alignSelf: 'center',
-              flexDirection: 'row',
-            }}>
-            {data.map((item, index) => (
-              <TouchableOpacity
-                activeOpacity={1}
-                key={index}
-                style={styles.ReportContainer}>
-                <View>
-                  <View style={styles.reportView}>
-                    {/* Top View */}
-                    <View style={styles.topInfo}>
-                      <View
-                        style={{
-                          width: scale(20),
-                          height: scale(20),
-                          backgroundColor: '#0488484C',
-                          borderRadius: 10,
-                        }}>
-                        <View>
-                          <Icon6
-                            name="arrow-up-right"
-                            color="#048848"
-                            size={20}
-                            style={styles.reportArrow}
-                          />
-                        </View>
-                      </View>
-                      <View style={{}}>
-                        <Text
-                          style={{
-                            color: '#048848',
-                            fontFamily: 'Inter-SemiBold',
-                            fontSize: scaleFont(12),
-                          }}>
-                          34.7%
-                        </Text>
-                        <Text
-                          style={{
-                            fontSize: scaleFont(7),
-                            fontFamily: 'Inter-SemiBold',
-                            color: '#727272',
-                          }}>
-                          {item.per}
-                        </Text>
-                      </View>
-                    </View>
-                    {/* bottom View */}
-
-                    <View style={styles.bottomInfo}>
-                      <Text style={styles.bottomTextInfo}>{item.title}</Text>
-                      <Text style={styles.amountInfo}>{item.amount}</Text>
-                    </View>
-                  </View>
-                </View>
-              </TouchableOpacity>
-            ))}
-          </View>
-        </ScrollView>
+        <View style={{width: scale(330), alignSelf: 'center'}}>
+          <FlatList
+            horizontal={true}
+            inverted={false}
+            onScrollAnimationEnd={false}
+            data={data}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+          />
+        </View>
         {/* business by product */}
         <View style={styles.businessProductContainer}>
           <View style={styles.businessproductView}>

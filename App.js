@@ -16,8 +16,27 @@ import Navigation from './src/MainNavigation/Navigation';
 import Weather2 from './src/Screen7/Weather2';
 import Weather from './src/Screen7/Weather';
 import {loadFonts} from './assets/fonts/fonts';
+import {Provider} from 'react-redux';
+import store from './src/contacts/Redux/store';
+
+import {Provider as PaperProvider} from 'react-native-paper';
 
 const App = () => {
+  const DefaultTheme = {
+    colors: {
+      primary: 'rgb(0, 104, 116)',
+      onPrimary: 'rgb(255, 255, 255)',
+      primaryContainer: 'rgb(151, 240, 255)',
+      onPrimaryContainer: 'rgb(0, 31, 36)',
+      secondary: 'rgb(74, 98, 103)',
+      onSecondary: 'rgb(255, 255, 255)',
+      secondaryContainer: '#F5F7FB',
+      onSecondaryContainer: 'rgb(5, 31, 35)',
+    },
+  };
+  const theme = {
+    ...DefaultTheme,
+  };
   return (
     <View style={styles.container}>
       {/* <Design/> */}
@@ -30,7 +49,13 @@ const App = () => {
       {/* <ImagePickerApp /> */}
       {/* <ExploreUI/> */}
       {/* <Calender /> */}
-      <Navigation />
+
+      <PaperProvider theme={theme}>
+        <Provider store={store}>
+          <Navigation />
+        </Provider>
+      </PaperProvider>
+
       {/* <ImagePickers /> */}
       {/* <Weather2 /> */}
       {/* <Weather/> */}

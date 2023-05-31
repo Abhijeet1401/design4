@@ -12,6 +12,7 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import RemitterDetails from './RemitterDetails';
 import {TextInput} from 'react-native-paper';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import {
   verticalScale,
   scale,
@@ -23,6 +24,11 @@ import {useNavigation} from '@react-navigation/native';
 
 import AddBeneficiaryScreen from './AddBeneficiaryScreen';
 import CashFundTransfer from './CashFundTransfer';
+const theme = {
+  ...DefaultTheme,
+  dark: true,
+  // Add any additional dark theme configurations if needed
+};
 
 const CashTransfer = () => {
   const [textInput1, setTextInput1] = useState('');
@@ -63,18 +69,22 @@ const CashTransfer = () => {
         <ScrollView>
           <View style={styles.RegisterInput}>
             <TextInput
+              theme={theme}
               label="Beneficiary Mobile Number"
-              textColor="#1D1D1D"
+              placeholderTextColor={'red'}
+              //textColor="#1D1D1D"
               value={textInput1}
               keyboardType="numeric"
               onChange={handleTextInput1Change}
               mode="outlined"
               style={styles.textinputBox}
               activeOutlineColor="#1D1D1D"
+              activeUnderlineColor="red"
             />
             {/* drop down type inputBox start */}
             <View style={styles.dropDownTypeContainer}>
               <TextInput
+                theme={theme}
                 label="Relation Type"
                 mode="outlined"
                 style={styles.textinputBox}
@@ -95,6 +105,7 @@ const CashTransfer = () => {
             <View>
               <TextInput
                 label="Gender"
+                theme={theme}
                 textColor="#1D1D1D"
                 mode="outlined"
                 style={styles.textinputBox}
@@ -114,6 +125,7 @@ const CashTransfer = () => {
             {/* remittance reason */}
             <View>
               <TextInput
+                theme={theme}
                 label="Remittance Reason"
                 textColor="#1D1D1D"
                 // value={textInput4}
@@ -136,6 +148,7 @@ const CashTransfer = () => {
             </View>
             <TextInput
               label="Beneficiart Name"
+              theme={theme}
               textColor="#1D1D1D"
               value={textInput5}
               keyboardType="numeric"
@@ -146,6 +159,7 @@ const CashTransfer = () => {
             />
             <TextInput
               label="Address"
+              theme={theme}
               textColor="#1D1D1D"
               value={textInput6}
               onChange={handleTextInput6Change}
@@ -206,6 +220,7 @@ const styles = StyleSheet.create({
     width: scale(320),
   },
   textinputBox: {
+    textColor: 'red',
     marginTop: verticalScale(24),
     backgroundColor: '#FFFFFF',
     fontFamily: 'Inter-Medium',

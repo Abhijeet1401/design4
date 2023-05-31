@@ -25,6 +25,12 @@ import {
 } from './Utility';
 import {useNavigation} from '@react-navigation/native';
 import TermCondition from './TermCondition';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+const theme = {
+  ...DefaultTheme,
+  dark: true,
+  // Add any additional dark theme configurations if needed
+};
 
 const EGiftVoucherFormModal = ({visible, onClose}) => {
   const [textInput1, setTextInput1] = useState('');
@@ -89,6 +95,7 @@ const EGiftVoucherFormModal = ({visible, onClose}) => {
           <View style={styles.contentContainer}>
             <View style={styles.VoucherInput}>
               <TextInput
+                theme={theme}
                 activeOutlineColor="#1D1D1D"
                 label="Sender"
                 value={textInput1}
@@ -101,6 +108,7 @@ const EGiftVoucherFormModal = ({visible, onClose}) => {
               />
               <TextInput
                 activeOutlineColor="#1D1D1D"
+                theme={theme}
                 label="Reciever"
                 value={textInput2}
                 onChange={handleTextInput2Change}
@@ -109,6 +117,7 @@ const EGiftVoucherFormModal = ({visible, onClose}) => {
               />
               <TextInput
                 activeOutlineColor="#1D1D1D"
+                theme={theme}
                 label="Message"
                 value={textInput3}
                 onChangeText={handleTextInput3Change}
@@ -117,6 +126,7 @@ const EGiftVoucherFormModal = ({visible, onClose}) => {
               />
               <TextInput
                 activeOutlineColor="#1D1D1D"
+                theme={theme}
                 label="Amount"
                 value={textInput4}
                 onChange={handleTextInput4Change}

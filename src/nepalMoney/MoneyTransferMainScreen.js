@@ -121,13 +121,13 @@ function MyTabBar(props) {
     </TouchableOpacity>
   );
 }
-export default function GetNewCardHome(value) {
+export default function MoneyTransferMainScreen(value) {
   return (
     <Tab.Navigator
       style={{backgroundColor: 'white'}}
       tabBar={props => <MyTabBar val={props} val1={value} />}>
       <Tab.Screen
-        name="new"
+        name="RemitterDetails"
         component={RemitterDetails}
         options={{tabBarLabel: 'Remitter Details'}}
       />

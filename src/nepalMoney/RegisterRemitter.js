@@ -11,6 +11,7 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import RemitterDetails from './RemitterDetails';
 import {TextInput} from 'react-native-paper';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import {
   verticalScale,
   scale,
@@ -22,6 +23,11 @@ import {useNavigation} from '@react-navigation/native';
 import CashTransfer from './CashTransfer';
 import AddBeneficiaryScreen from './AddBeneficiaryScreen';
 import BeneficiaryListScreen from './BeneficiaryListScreen';
+const theme = {
+  ...DefaultTheme,
+  dark: true,
+  // Add any additional dark theme configurations if needed
+};
 
 const RegisterRemitter = () => {
   const [textInput1, setTextInput1] = useState('');
@@ -64,15 +70,18 @@ const RegisterRemitter = () => {
           <TextInput
             label="Remitter Type"
             textColor="#1D1D1D"
+            theme={theme}
             value={textInput1}
             onChange={handleTextInput1Change}
             mode="outlined"
             style={styles.textinputBox}
             activeOutlineColor="#1D1D1D"
+            activeUnderlineColor="red"
           />
 
           <TextInput
             label="Source of income"
+            theme={theme}
             textColor="#1D1D1D"
             value={textInput2}
             onChange={handleTextInput2Change}
@@ -82,6 +91,7 @@ const RegisterRemitter = () => {
           />
           <TextInput
             label="Annual Income"
+            theme={theme}
             textColor="#1D1D1D"
             value={textInput3}
             keyboardType="numeric"

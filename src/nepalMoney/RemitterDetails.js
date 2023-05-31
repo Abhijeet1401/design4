@@ -16,7 +16,14 @@ import {
   fullWidth,
 } from './Utility';
 import {TextInput} from 'react-native-paper';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import RegisterRemitter from './RegisterRemitter';
+import ContactsMainScreen from '../contacts/ContactsMainScreen';
+const theme = {
+  ...DefaultTheme,
+  dark: true,
+  // Add any additional dark theme configurations if needed
+};
 const RemitterDetails = props => {
   const [mobileNumber, setMobileNumber] = useState('');
   const [selectCountry, setSelectCountry] = useState('India');
@@ -97,7 +104,9 @@ const RemitterDetails = props => {
           <View style={styles.textBtnView}>
             <TextInput
               label="Remitter Mobile Number"
+              placeholderTextColor={'red'}
               textColor="#1D1D1D"
+              theme={theme}
               value={mobileNumber}
               keyboardType="phone-pad"
               onChange={handleTextInput1Change}
@@ -120,6 +129,15 @@ const RemitterDetails = props => {
             <Text style={styles.merchantKycText}>Complete Merchant KYC</Text>
           </View>
         </TouchableOpacity>
+        {/* Next Module*/}
+        <View>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate(ContactsMainScreen)}>
+            <View style={styles.linkPreviousTxn}>
+              <Text style={styles.prevTxnText}>Next Module</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </TouchableOpacity>
     </View>
   );
@@ -197,7 +215,6 @@ const styles = StyleSheet.create({
     height: verticalScale(58),
     borderRadius: verticalScale(10),
   },
-
   textBtnContainer: {
     marginTop: verticalScale(10),
     backgroundColor: '#FFFFFF',
@@ -245,8 +262,16 @@ const styles = StyleSheet.create({
   },
   merchantKycText: {
     fontSize: scaleFont(14),
-
     fontFamily: 'Inter-Regular',
+    color: '#0033A1',
+    textDecorationLine: 'underline',
+  },
+  linkPreviousTxn: {
+    marginTop: verticalScale(200),
+    alignSelf: 'center',
+  },
+  prevTxnText: {
+    fontFamily: 'Inter-Bold',
     color: '#0033A1',
     textDecorationLine: 'underline',
   },

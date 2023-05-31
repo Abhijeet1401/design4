@@ -11,6 +11,13 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import RemitterDetails from './RemitterDetails';
 import {TextInput} from 'react-native-paper';
+
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+const theme = {
+  ...DefaultTheme,
+  dark: true,
+  // Add any additional dark theme configurations if needed
+};
 import {
   verticalScale,
   scale,
@@ -63,6 +70,7 @@ const BankTransfer = () => {
 
           <View style={styles.RegisterInput}>
             <TextInput
+              theme={theme}
               label="Account Number"
               textColor="#1D1D1D"
               value={textInput1}
@@ -73,6 +81,7 @@ const BankTransfer = () => {
               activeOutlineColor="#1D1D1D"
             />
             <TextInput
+              theme={theme}
               label="Confirm Accout Number"
               textColor="#1D1D1D"
               value={textInput2}
@@ -83,6 +92,7 @@ const BankTransfer = () => {
               activeOutlineColor="#1D1D1D"
             />
             <TextInput
+              theme={theme}
               label="Bank Name"
               textColor="#1D1D1D"
               value={textInput3}
@@ -93,6 +103,7 @@ const BankTransfer = () => {
             />
 
             <TextInput
+              theme={theme}
               label="Beneficiary Mobile Number"
               textColor="#1D1D1D"
               value={textInput4}
@@ -105,6 +116,7 @@ const BankTransfer = () => {
             {/* drop down type inputBox start */}
             <View style={styles.dropDownTypeContainer}>
               <TextInput
+                theme={theme}
                 label="Relation Type"
                 mode="outlined"
                 style={styles.textinputBox}
@@ -124,6 +136,7 @@ const BankTransfer = () => {
 
             <View>
               <TextInput
+                theme={theme}
                 label="Gender"
                 textColor="#1D1D1D"
                 mode="outlined"
@@ -144,6 +157,7 @@ const BankTransfer = () => {
             {/* remittance reason */}
             <View>
               <TextInput
+                theme={theme}
                 label="Remittance Reason"
                 textColor="#1D1D1D"
                 // value={textInput4}
@@ -166,6 +180,7 @@ const BankTransfer = () => {
             </View>
             <TextInput
               label="Beneficiart Name"
+              theme={theme}
               textColor="#1D1D1D"
               value={textInput5}
               onChange={handleTextInput5Change}
@@ -176,6 +191,7 @@ const BankTransfer = () => {
 
             <TextInput
               label="Address"
+              theme={theme}
               textColor="#1D1D1D"
               value={textInput6}
               onChange={handleTextInput6Change}
